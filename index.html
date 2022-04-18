@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link href="fontawesome/css/all.css" rel="stylesheet">
+    </link>
+    <title>E-ctare</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="topnav">
+            <a style="background-color:#ddd; color: black;" href="/index.html">Balancete PJ</a>
+            <a href="./balanceteValidacao/balanceteValidacao.html">Balancete Validação</a>
+            <a href="./boaVistaPj/boaVistaPj.html">Boa Vista PJ</a>
+            <a href="./boaVistaPfSocios/boaVistaPfSocios.html">Boa Vista PF Sócios</a>
+            <a href="./irSocios/irSocios.html">IR Sócios</a>
+            <a href="./resumo/resumo.html">Resumo</a>
+        </div>
+
+        <div class="dados-ectare">
+            <h1 class="h1-dados-ectare">ECTARE PAY SERVIÇOS DE GESTÃO DE PAGAMENTOS S/A</h1>
+            <p class="p-dados-ectare-cnpj">34.536.749/0001-70</p>
+            <p class="p-dados-ectare">RUA LITUÂNIA, 150 - JARDIM EUROPA</p>
+            <p class="p-dados-ectare">37950-000 - SAO SEBASTIÃO DO PARAÍSO</p>
+        </div>
+
+        <div class="title">
+            <h1 class="h1-title">RESUMO</h1>
+        </div>
+
+        <div class="container-resumo">
+            <div class="container-liquidez">
+                <h3 id="liquidez_corrente_title">Liquidez Corrente</h3>
+                <div id="liquidez_corrente_icons"></div>
+                <span id="liquidez_corrente_indice"></span>
+                <span class=situacao id="liquidez_corrente_situacao"></span>
+            </div>
+            <div class="container-liquidez">
+                <h3 id="liquidez_geral_title">Liquidez Geral</h3>
+                <div id="liquidez_geral_icons"></div>
+                <span id="liquidez_geral_indice"></span>
+                <span class="situacao" id="liquidez_geral_situacao"></span>
+            </div>
+
+            <div class="container-liquidez">
+                <h3 id="endividamento_geral_title">Endividamento Geral</h3>
+                <div id="endividamento_geral_icons"></div>
+                <span id="endividamento_geral_indice"></span>
+                <span class="situacao" id="endividamento_geral_situacao"></span>
+            </div>
+
+            <div class="container-liquidez">
+                <h3 id="patrimonio_social_title">Imobilização Patrimônio Social</h3>
+                <div id="patrimonio_social_icons"></div>
+                <span id="patrimonio_social_indice"></span>
+                <span class="situacao" id="patrimonio_social_situacao"></span>
+            </div>
+
+            <div class="container-liquidez">
+                <h3 id="liquidez_imediata_title">Liquidez Imediata</h3>
+                <div id="liquidez_imediata_icons"></div>
+                <span id="liquidez_imediata_indice"></span>
+                <span class="situacao" id="liquidez_imediata_situacao"></span>
+            </div>
+
+            <div class="container-liquidez">
+                <h3 id="liquidez_seca_title">Liquidez Seca</h3>
+                <div id="liquidez_seca_icons"></div>
+                <span id="liquidez_seca_indice"></span>
+                <span class="situacao" id="liquidez_seca_situacao"></span>
+            </div>
+
+            <div class="container-liquidez">
+                <h3 id="terceiros_title">Partic. Capital de Terceiros</h3>
+                <div id="terceiros_icons"></div>
+                <span id="terceiros_indice"></span>
+                <span class="situacao" id="terceiros_situacao"></span>
+            </div>
+
+            <div class="container-liquidez">
+                <h3 id="solvencia_geral_title">Solvência Geral</h3>
+                <div id="solvencia_geral_icons"></div>
+                <span id="solvencia_geral_indice"></span>
+                <span class="situacao" id="solvencia_geral_situacao"></span>
+            </div>
+
+            <div class="container-liquidez">
+                <h3 id="lucratividade_title">Lucratividade</h3>
+                <div id="lucratividade_icons"></div>
+                <span id="lucratividade_indice"></span>
+                <span class="situacao" id="lucratividade_situacao"></span>
+            </div>
+        </div>
+
+        <div class="title">
+            <h1 class="h1-title">VARIÁVEIS</h1>
+        </div>
+
+        <div class="container-variaveis">
+            <table id="index-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Jan/Mar</th>
+                        <th>Abr/Jun</th>
+                        <th>Jul/Set</th>
+                        <th>Out/Dez</th>
+                    </tr>
+                </thead>
+                <tbody id="table_body">
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="title">
+            <h1 class="h1-title">INDICADORES DE PERFORMANCE</h1>
+        </div>
+
+        <div class="container-indicadores_performance">
+            <div class="container-indicadores-performance-liquidez">
+                <h3 id="liquidez_corrente_title">Liquidez Corrente</h3>
+                <span id="liquidez_corrente_indice"></span>
+                <span class="situacao" id="liquidez_corrente_situacao"></span>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

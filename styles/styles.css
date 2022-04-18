@@ -1,0 +1,145 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Sans-Serif;
+}
+
+.container {
+    width: 100vw;
+    height: 100%;
+}
+
+.topnav {
+    background-color: #5ab447;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.dados-ectare {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 2px;
+}
+
+.h1-dados-ectare {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.p-dados-ectare-cnpj {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.p-dados-ectare {
+    margin-top: 10px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 2px;
+    background-color: #04AA6D;
+}
+
+.h1-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+.container-resumo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.container-resumo .container-liquidez {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px 20px 0px 20px;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.container-resumo .container-liquidez .situacao {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.container-variaveis {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid black;
+    background-color: #333;
+    color: white;
+}
+
+table th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+table tr, td {
+    border: 1px solid black;
+}
+
+.container-indicadores-performance-liquidez {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
