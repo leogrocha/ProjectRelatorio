@@ -1,5 +1,5 @@
 export default class Liquidez{
-  constructor (liquidez_balanco, liquidez_dre){
+  constructor (liquidez_balanco, dre){
       console.log(liquidez_balanco)
       this.liquidez_indices = liquidez_balanco.liquidez_indices
       this.liquidez_corrente = this.liquidez_indices.indice_liquidez_corrente;
@@ -10,7 +10,7 @@ export default class Liquidez{
       this.patrimonio_social = this.liquidez_indices.imobilizacao_patrimonio_social;
       this.endividamento_geral = this.liquidez_indices.indice_endividamento_geral;
       this.solvencia_geral = this.liquidez_indices.indice_solvencia_geral;
-      this.lucratividade = liquidez_dre.liquidez_indices.lucratividade;
+      this.lucratividade = dre.liquidez_indices.lucratividade;
   }
 
   // info() {

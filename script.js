@@ -1,8 +1,8 @@
 import Liquidez from './model/liquidez.js';
 
 
-function get_liquidez(liquidez_balanco, liquidez_dre) {
-    const indices = new Liquidez(liquidez_balanco, liquidez_dre);
+function get_liquidez(liquidez_balanco, dre) {
+    const indices = new Liquidez(liquidez_balanco, dre);
     let indices_lst = ['liquidez_corrente', 'liquidez_geral', 'endividamento_geral', 'patrimonio_social', 'liquidez_imediata',
         'liquidez_seca', 'terceiros', 'solvencia_geral', 'lucratividade'];
 
@@ -84,7 +84,7 @@ function get_table(result) {
 
 function relatorio(result) {
     if ("liquidez_balanco" in result.data) {
-        get_liquidez(result.data.liquidez_balanco, result.data.liquidez_dre);
+        get_liquidez(result.data.liquidez_balanco, result.data.dre);
     } else if ("liquidez_variaveis" in result.data) {
         get_table(result.data.liquidez_variaveis);
     }
