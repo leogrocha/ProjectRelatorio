@@ -7,8 +7,9 @@ function get_liquidez(liquidez_balanco, dre) {
         'liquidez_seca', 'terceiros', 'solvencia_geral', 'lucratividade'];
 
     for (let i = 0; i < indices_lst.length; i++) {
-        document.querySelector("#" + indices_lst[i] + "_indice").innerText = indices[indices_lst[i]].indice.toFixed(2);
-        document.querySelector("#" + indices_lst[i] + "_situacao").innerText = indices[indices_lst[i]].situacao;
+
+        document.getElementsByClassName(indices_lst[i] + "_indice")[0].innerText = indices[indices_lst[i]].indice.toFixed(2);
+        document.getElementsByClassName(indices_lst[i] + "_situacao")[0].innerText = indices[indices_lst[i]].situacao;
 
 
         console.log(indices_lst[i] + " - " + indices[indices_lst[i]].situacao);
@@ -43,6 +44,11 @@ function get_liquidez(liquidez_balanco, dre) {
                 <i style="color: darkcyan;" class="fa-regular fa-face-laugh-beam"></i>
                 </div>
             `
+        }
+
+        for (let j = 0; j < indices_lst.length; j++) {
+            document.getElementsByClassName(indices_lst[j] + "_indice")[1].innerText = indices[indices_lst[j]].indice;
+            document.getElementsByClassName(indices_lst[j] + "_situacao")[1].innerText = indices[indices_lst[j]].situacao;
         }
     }
 }
@@ -88,7 +94,7 @@ function relatorio(result) {
     } else if ("liquidez_variaveis" in result.data) {
         get_table(result.data.liquidez_variaveis);
     }
-    
+
 }
 
 var raw = {
@@ -96,7 +102,7 @@ var raw = {
     "balanco_anterior": ["https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf"],
     "dre": ["https://server.ectarepay.com.br/ectareArquivos/DRE.pdf"],
     "dre_anterior": ["https://server.ectarepay.com.br/ectareArquivos/DRE.pdf"],
-    "boavista": ["https://server.ectarepay.com.br/ectareArquivos/bomdia.json","https://server.ectarepay.com.br/ectareArquivos/RenataOliveira.json"]
+    "boavista": ["https://server.ectarepay.com.br/ectareArquivos/bomdia.json", "https://server.ectarepay.com.br/ectareArquivos/RenataOliveira.json"]
 };
 
 console.log(raw)

@@ -101,11 +101,6 @@ body {
     border-radius: 5px;
 }
 
-.container-resumo .container-liquidez .situacao {
-    font-size: 18px;
-    font-weight: bold;
-}
-
 .container-variaveis {
     display: flex;
     justify-content: center;
