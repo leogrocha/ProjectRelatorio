@@ -81,3 +81,53 @@ body {
     text-align: center;
     padding: 5px;
 }
+
+.container-boa-vista .container-boa-vista-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 50px 0px 50px;
+    
+}
+
+.container-boa-vista .container-boa-vista-1 .container-medidor {
+    border: 1px solid black;
+}
+
+.container-boa-vista .container-boa-vista-1 .container-medidor .medidor {
+    width: 10%;
+    height: 10%;
+    border: 1px solid black;
+}
+
+
+
+.container-boa-vista .container-boa-vista-1 .container-score {
+    margin-right: 50px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-boa-vista .container-boa-vista-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 50px 0px 50px;
+    
+}
+
+.container-boa-vista .container-boa-vista-2 .containers {
+    border: 1px solid black;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 150px;
+    width: 200px;
+    text-align: center;
+}
+
