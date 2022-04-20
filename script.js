@@ -47,7 +47,7 @@ function get_liquidez(liquidez_balanco, dre) {
         }
 
         for (let j = 0; j < indices_lst.length; j++) {
-            document.getElementsByClassName(indices_lst[j] + "_indice")[1].innerText = indices[indices_lst[j]].indice;
+            document.getElementsByClassName(indices_lst[j] + "_indice")[1].innerText = indices[indices_lst[j]].indice.toFixed(2);
             document.getElementsByClassName(indices_lst[j] + "_situacao")[1].innerText = indices[indices_lst[j]].situacao;
         }
     }
