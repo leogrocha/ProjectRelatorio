@@ -64,6 +64,21 @@ body {
     margin-top: 10px;
 }
 
+[indice] {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+[situacao] {
+    font-weight: bold;
+    font-size: 18px;
+}   
+
+[title] {
+    font-weight: bold;
+    font-size: 20px;
+}
+
 .title {
     display: flex;
     justify-content: center;
