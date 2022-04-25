@@ -1,5 +1,48 @@
 import Liquidez from './model/liquidez.js';
 
+var raw = {
+    "balanco": ["https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf", "https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf"],
+    "balanco_anterior": ["https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf"],
+    "dre": ["https://server.ectarepay.com.br/ectareArquivos/DRE.pdf"],
+    "dre_anterior": ["https://server.ectarepay.com.br/ectareArquivos/DRE.pdf"],
+    "boavista": ["https://server.ectarepay.com.br/ectareArquivos/bomdia.json", "https://server.ectarepay.com.br/ectareArquivos/RenataOliveira.json"]
+};
+
+
+console.log(raw.balanco.length);
+console.log(raw)
+var requestOptions = {
+    headers: {
+        "Accept": "application/json, text/javascript, /; q=0.01",
+        "Access-Control-Allow-Headers": "Content-Type",
+        'Content-Type': 'application/json; charset=UTF-8'
+    },
+    method: 'POST',
+    body: JSON.stringify(raw),
+    redirect: 'follow',
+    cache: 'no-cache'
+};
+
+const BASE_URL = "http://analisededados.ectare.com.br/relatorio";
+
+function get_data() {
+    try {
+        fetch(BASE_URL, requestOptions)
+            .then(res => res.json())
+            .then(result => {
+                console.log(result)
+                relatorio(result)
+                console.log(result.data.liquidez_balanco);
+            })
+    } catch (error) {
+        console.log('error', error);
+    }
+}
+
+get_data();
+
+
+
 
 function get_liquidez(liquidez_balanco, dre) {
     const indices = new Liquidez(liquidez_balanco, dre);
@@ -58,83 +101,58 @@ function formatLocale(value) {
 }
 
 function get_table(result) {
-    if (result.sucess) {
-        var indices_lst = ['ativo', 'ativo_circulante', 'ativo_nao_circulante', 'disponiblidades', 'estoques', 'imobilizado',
-            'obrigacoes_a_longo_prazo', 'passivo_circulante', 'passivo_nao_circulante', 'patrimonio_liquido', 'realizavel_a_longo_prazo'];
-    }
+    // Criando a tabela
+    let table = document.createElement('table');
+    let thead = document.createElement('thead');
+    let tbody = document.createElement('tbody');
+    const indices_table = ['ativo', 'ativo_circulante', 'ativo_nao_circulante', 'disponibilidades', 'estoques', 'imobilizado',
+     'obrigacoes_a_longo_prazo', 'passivo_circulante', 'passivo_nao_circulante', 'patrimonio_liquido', 'realizavel_a_longo_prazo'];
 
-    var tbody = document.querySelector("#table_body");
+    table.appendChild(thead);
+    table.appendChild(tbody);
 
-    for (let i = 0; i < indices_lst.length; i++) {
-        var item = result.table[indices_lst[i]];
+    document.getElementById('container-variaveis').appendChild(table);
 
-        let row = document.createElement('tr')
-        let row_var = document.createElement('td')
-        row_var.innerHTML = indices_lst[i].toLowerCase();
-        let row_data1 = document.createElement('td')
-        row_data1.innerHTML = formatLocale(item[0]);
-        let row_data2 = document.createElement('td')
-        row_data2.innerHTML = formatLocale(item[1]);
-        let row_data3 = document.createElement('td')
-        row_data3.innerHTML = formatLocale(item[2]);
-        let row_data4 = document.createElement('td')
-        row_data4.innerHTML = formatLocale(item[3]);
-        row.appendChild(row_var);
-        row.appendChild(row_data1);
-        row.appendChild(row_data2);
-        row.appendChild(row_data3);
-        row.appendChild(row_data4);
-        tbody.appendChild(row);
+    for (let i = 0; i < raw.balanco.length; i++) {
+        let row = document.createElement('tr');
+        let heading_1 = document.createElement('th');
+        heading_1.innerHTML = '';
+        let heading_2 = document.createElement('th');
+        heading_2.innerHTML = 'Jan/Mar';
+        let heading_3 = document.createElement('th');
+        heading_3.innerHTML = 'Abr/Jun';
+        let heading_4 = document.createElement('th');
+        heading_4.innerHTML = 'Jul/Set';
+        let heading_5 = document.createElement('th');
+        heading_5.innerHTML = 'Out/Dez';
+
+        row.appendChild(heading_1);
+        row.appendChild(heading_2);
+        row.appendChild(heading_3);
+        row.appendChild(heading_4);
+        row.appendChild(heading_5);
+        thead.appendChild(row);
+
+        
+        // for(let j = 0; j < indices_table.length; j++) {
+        //     let row_1 = document.createElement('tr');
+        //     let cell_1 = document.createElement('td');
+        //     cell_1.innerHTML = indices_table[j];
+
+        //     row_1.appendChild(cell_1);
+        //     tbody.appendChild(row_1);
+        // }
+
     }
 }
+
+get_table();
 
 function relatorio(result) {
     if ("liquidez_balanco" in result.data) {
-        get_liquidez(result.data.liquidez_balanco, result.data.dre); 
-    }  
-    
-    // if ("liquidez_variaveis" in result.data) {
-    //     get_table(result.data.liquidez_variaveis);
-    // }
-}
-
-var raw = {
-    "balanco": ["https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf", "https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf"],
-    "balanco_anterior": ["https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf"],
-    "dre": ["https://server.ectarepay.com.br/ectareArquivos/DRE.pdf"],
-    "dre_anterior": ["https://server.ectarepay.com.br/ectareArquivos/DRE.pdf"],
-    "boavista": ["https://server.ectarepay.com.br/ectareArquivos/bomdia.json", "https://server.ectarepay.com.br/ectareArquivos/RenataOliveira.json"]
-};
-
-console.log(raw)
-var requestOptions = {
-    headers: {
-        "Accept": "application/json, text/javascript, /; q=0.01",
-        "Access-Control-Allow-Headers": "Content-Type",
-        'Content-Type': 'application/json; charset=UTF-8'
-    },
-    method: 'POST',
-    body: JSON.stringify(raw),
-    redirect: 'follow',
-    cache: 'no-cache'
-};
-
-const BASE_URL = "http://analisededados.ectare.com.br/relatorio";
-
-function get_data() {
-    try {
-        fetch(BASE_URL, requestOptions)
-            .then(res => res.json())
-            .then(result => {
-                console.log(result)
-                let success = result.success
-                relatorio(result)
-            })
-    } catch (error) {
-        console.log('error', error);
-        document.querySelector("#saida").innerHTML = error;
+        get_liquidez(result.data.liquidez_balanco, result.data.dre);
+        console.log(result.data.liquidez_balanco.length);
+        get_table(result.data.liquidez_balanco);
     }
 }
-
-get_data();
 

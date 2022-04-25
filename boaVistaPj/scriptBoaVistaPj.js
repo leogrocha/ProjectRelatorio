@@ -59,7 +59,7 @@ function get_data() {
                 //relatorio(result)
                 //relatorio(result)
                 //console.log(result.data.boavista[0].score.score);
-                document.querySelector('todos_dados').innerHTML = result.data;
+                document.querySelector('.todos_dados').innerHTML = result.data;
 
             })
     } catch (error) {
