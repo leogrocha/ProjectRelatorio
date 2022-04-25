@@ -90,11 +90,12 @@ function get_table(result) {
 
 function relatorio(result) {
     if ("liquidez_balanco" in result.data) {
-        get_liquidez(result.data.liquidez_balanco, result.data.dre);
-    } else if ("liquidez_variaveis" in result.data) {
-        get_table(result.data.liquidez_variaveis);
-    }
-
+        get_liquidez(result.data.liquidez_balanco, result.data.dre); 
+    }  
+    
+    // if ("liquidez_variaveis" in result.data) {
+    //     get_table(result.data.liquidez_variaveis);
+    // }
 }
 
 var raw = {
