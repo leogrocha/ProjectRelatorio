@@ -24,6 +24,7 @@ export default class Liquidez{
       this.passivo_nao_circulante = this.liquidez_variaveis.passivo_nao_circulante;
       this.patrimonio_liquido = this.liquidez_variaveis.patrimonio_liquido;
       this.realizavel_a_longo_prazo = this.liquidez_variaveis.realizavel_a_longo_prazo;
+
   }
 };
 

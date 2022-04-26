@@ -42,8 +42,6 @@ function get_data() {
 get_data();
 
 
-
-
 function get_liquidez(liquidez_balanco, dre) {
     const indices = new Liquidez(liquidez_balanco, dre);
     let indices_lst = ['liquidez_corrente', 'liquidez_geral', 'endividamento_geral', 'patrimonio_social', 'liquidez_imediata',
@@ -146,7 +144,7 @@ function get_table(result) {
     }
 }
 
-get_table();
+
 
 function relatorio(result) {
     if ("liquidez_balanco" in result.data) {

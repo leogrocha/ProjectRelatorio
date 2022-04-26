@@ -9,22 +9,24 @@ medidor.innerHTML += `
                 <img src="${setUrl}" alt="Medidor" style="width: 300px; heigth: 300px">
 `;
 
-// function get_boavista_pj(result) {
-//     const boavista_pj = new BoaVistaPJ(result.boavista);
-//     const score_value = document.getElementById('#score_value');
-//     // const score_description = document.getElementById('score_description');
+function get_boavista_pj(boavista) {
+    var boavista_pj = new BoaVistaPJ(boavista);
+    const score_value = document.getElementById('score_value');
+    const score_texto = document.getElementById('score_description');
 
-//     //score_value.innerHTML += result.data.boavista[0].score.score;
-//     score_value.innerText = boavista_pj.score.score;
+    score_value.innerHTML = boavista_pj;
     
     
-// }
+}
 
-// function relatorio(result){
-//     if("boavista" in result.data){
-//         get_boavista_pj(result.data.boavista);
-//     }
-// }   
+function relatorio(result){
+    if("boavista" in result.data){
+        get_boavista_pj(result.data.boavista);
+        console.log(true);
+    } else {
+        console.log(false);
+    }
+}   
 
 
 var raw = {
@@ -55,16 +57,15 @@ function get_data() {
             .then(res => res.json())
             .then(result => {
                 console.log(result)
-                let success = result.success
+                console.log(result.data)
                 //relatorio(result)
-                //relatorio(result)
+                relatorio(result)
                 //console.log(result.data.boavista[0].score.score);
-                document.querySelector('.todos_dados').innerHTML = result.data;
+                //get_boavista_pj(result.data.boavista);
 
             })
     } catch (error) {
         console.log('error', error);
-        document.querySelector("#saida").innerHTML = error;
     }
 }
 
