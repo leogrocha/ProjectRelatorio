@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styleBoaVistaPfSocios.css">
     <link rel="icon" type="image/png" href="../assets/icon.png">
+    <link href="../fontawesome/css/all.css" rel="stylesheet">
     <title>E-ctare</title>
 </head>
 <body>
@@ -33,32 +34,43 @@
         <div class="container-resumo">
             <div class="containers">
                 <div class="container-score">
-                    <h3>Score</h3>
+                    <h3 class="container-title">Score</h3>
                     <p id="score"></p>
                     <p id="texto"></p>
                 </div>
 
                 <div class="renda-presumida">
-                    <h3>Renda Presumida</h3>
-                    <p id="renda_presumida_score"></p>
-                    <p id="renda_presumida_texto"></p>
+                    <h3 class="container-title">Renda Presumida</h3>
+                    <div style="display: flex;">
+                        <p class="renda-presumida-name">Faixa/Classe:</p>
+                        <span class="renda-presumida-texto" id="renda_presumida_score"></span>
+                    </div>
+                    <div style="display: flex;">
+                        <p class="renda-presumida-name">Renda Mensal:</p>
+                        <span class="renda-presumida-texto" id="renda_presumida_texto"></span>
+                    </div>
                 </div>
 
-                <div class="medidor">
-                    
+                <div class="medidor"></div>
+                <div style="display: flex;">
+                    <p id="texto-probabilidade">Probablidade de Inadimplência:</p>
+                    <p id="probabilidade"></p>
                 </div>
             </div>
             <div class="containers">
                 <div class="container-situacao">
                     <h3>Protestos</h3>
+                    <div id="protestos_icons"></div>
                 </div>
 
                 <div class="container-situacao">
                     <h3>Registro de débitos</h3>
+                    <div id="debitos_lista_icons"></div>
                 </div>
 
                 <div class="container-situacao">
                     <h3>Cheques Devolvidos/Sem Fundo</h3>
+                    <div id="cheque-sem-fundo_icons"></div>
                 </div>
             </div>
         </div>

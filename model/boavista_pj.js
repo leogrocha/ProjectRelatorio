@@ -1,6 +1,5 @@
 export default class BoaVistaPJ {
-    constructor(boavista) {
-        this.boavista = boavista[0].score.score;
-        
+    constructor(boavista){
+        this.score = boavista[0].score
     }
 }

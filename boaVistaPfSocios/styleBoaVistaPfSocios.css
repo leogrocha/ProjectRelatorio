@@ -89,6 +89,52 @@ body {
     flex-direction: row;
 }
 
+.container-title {
+    background-color: lightgreen;
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.renda-presumida .renda-presumida-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 10px 10px 20px;
+    text-align: center;
+}
+
+.renda-presumida .renda-presumida-texto {
+    font-size: 20px;
+    margin: 10px 10px 10px 20px;
+    text-align: center;
+}
+
+#score {
+    font-weight: bold;
+    margin: 10px 0px 10px 0px;
+    font-size: 28px;
+}
+
+#texto {
+    font-size: 18px;
+    margin: 0px 10px 10px 10px;
+}
+
+#texto-probabilidade {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#probabilidade {
+    font-size: 18px;
+    margin-left: 10px;
+    
+}
+
 .container-resumo .containers {
     display: flex;
     justify-content: center;
@@ -105,8 +151,10 @@ body {
     flex-direction: column;
     border: 2px solid black;
     border-radius: 5px;
-    margin: 20px;
-    padding: 5px;
+    margin: 10px;
+    width: 200px;
+    height: 150px;
+    text-align: center;
 }
 
 #container-resumo-boavista {

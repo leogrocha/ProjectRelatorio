@@ -34,14 +34,42 @@ function get_boavista_pf(boavista) {
     const renda_presumida_texto = document.getElementById('renda_presumida_texto');
     renda_presumida_texto.innerHTML = boavista_pf.renda_presumida.texto;
 
+    const probabilidade = document.getElementById('probabilidade');
+    probabilidade.innerHTML += (boavista_pf.score.probabilidade).toFixed(1) + "%";
+
     var medidor = document.querySelector(".medidor");
 
     const setUrl = `https://server.sistemaagely.com.br/GraficoPonteiro?valor=100&maximo=1000`;
     medidor.innerHTML += `
                 <img src="${setUrl}" alt="Medidor" style="width: 300px; heigth: 300px">
-`;
+    `;
 
+    //const indices_icons = ['protestos', 'debitos_lista'];
+
+    if(boavista_pf.protestos.situacao === 'ruim') {
+        document.querySelector("#protestos_icons").innerHTML += `
+            <div class="fa-4x" style="margin-top: 20px;">
+                 <i style="color: red;" class="fa-regular fa-thumbs-down"></i>
+             </div> `;
+    } else if(boavista_pf.protestos.situacao === 'bom') {
+        document.querySelector("#protestos_icons").innerHTML += `
+            <div class="fa-4x" style="margin-top: 20px;">
+                 <i style="color: red;" class="fa-regular fa-thumbs-up"></i>
+             </div> `;
+    } 
     
+    if(boavista_pf.debito_lista.situacao === 'ruim') {
+        document.querySelector("#debitos_lista_icons").innerHTML += `
+            <div class="fa-4x" style="margin-top: 20px;">
+                 <i style="color: red;" class="fa-regular fa-thumbs-down"></i>
+             </div> `;
+    } else if(boavista_pf.debito_lista.situacao === 'bom') {
+        document.querySelector("#debitos_lista_icons").innerHTML += `
+            <div class="fa-4x" style="margin-top: 20px;">
+                 <i style="color: red;" class="fa-regular fa-thumbs-up"></i>
+             </div> `;
+    }  
+
 }
 
 function relatorio(result) {
