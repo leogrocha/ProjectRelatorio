@@ -57,13 +57,12 @@ function get_boavista_pf(boavista) {
 
     var medidor = document.querySelector(".medidor");
 
-    //const ponteiro = Number(score);
-    let ponteiro = parseInt(score);
-    console.log(typeof(ponteiro));
     const setUrl = `https://server.sistemaagely.com.br/GraficoPonteiro?valor=100&maximo=1000`;
     medidor.innerHTML += `
                 <img src="${setUrl}" alt="Medidor" style="width: 300px; heigth: 300px">
 `;
+
+    
 }
 
 function relatorio(result) {

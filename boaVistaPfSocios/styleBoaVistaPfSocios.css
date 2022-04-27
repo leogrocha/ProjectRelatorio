@@ -94,7 +94,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 2px solid #04AA6D;
     margin: 20px;
     padding: 5px;
 }
@@ -125,6 +124,7 @@ body {
     flex-direction: column;
     width: 50vw;
     border: 2px solid black;
+    border-radius: 5px;
 }
 
 .container-resumo .containers .renda-presumida {
@@ -134,6 +134,12 @@ body {
     flex-direction: column;
     width: 50vw;
     border: 2px solid black;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.container-resumo .containers .medidor {
+    margin-top: 10px;
 }
 
 table tr th {

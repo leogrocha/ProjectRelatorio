@@ -132,14 +132,14 @@ function get_table(result) {
         thead.appendChild(row);
 
         
-        // for(let j = 0; j < indices_table.length; j++) {
-        //     let row_1 = document.createElement('tr');
-        //     let cell_1 = document.createElement('td');
-        //     cell_1.innerHTML = indices_table[j];
-
-        //     row_1.appendChild(cell_1);
-        //     tbody.appendChild(row_1);
-        // }
+        for (let j = 0; j < indices_table.length; j++) {
+            let row_1 = document.createElement('tr');
+            let cell_1 = document.createElement('td');
+            cell_1.innerHTML = indices_table[j];
+    
+            row_1.appendChild(cell_1);
+            tbody.appendChild(row_1);
+        }
 
     }
 }
