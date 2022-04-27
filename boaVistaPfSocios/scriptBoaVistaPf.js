@@ -44,37 +44,28 @@ function get_boavista_pf(boavista) {
                 <img src="${setUrl}" alt="Medidor" style="width: 300px; heigth: 300px">
     `;
 
-    //const indices_icons = ['protestos', 'debitos_lista'];
+    const indices_icons = ['protestos', 'debitos_lista'];
 
-    if(boavista_pf.protestos.situacao === 'ruim') {
-        document.querySelector("#protestos_icons").innerHTML += `
-            <div class="fa-4x" style="margin-top: 20px;">
-                 <i style="color: red;" class="fa-regular fa-thumbs-down"></i>
-             </div> `;
-    } else if(boavista_pf.protestos.situacao === 'bom') {
-        document.querySelector("#protestos_icons").innerHTML += `
-            <div class="fa-4x" style="margin-top: 20px;">
-                 <i style="color: red;" class="fa-regular fa-thumbs-up"></i>
-             </div> `;
-    } 
-    
-    if(boavista_pf.debito_lista.situacao === 'ruim') {
-        document.querySelector("#debitos_lista_icons").innerHTML += `
-            <div class="fa-4x" style="margin-top: 20px;">
-                 <i style="color: red;" class="fa-regular fa-thumbs-down"></i>
-             </div> `;
-    } else if(boavista_pf.debito_lista.situacao === 'bom') {
-        document.querySelector("#debitos_lista_icons").innerHTML += `
-            <div class="fa-4x" style="margin-top: 20px;">
-                 <i style="color: red;" class="fa-regular fa-thumbs-up"></i>
-             </div> `;
-    }  
+    for(let i = 0; i < indices_icons.length; i++){
+        const index = indices_icons[i];
+        const icon = document.getElementById(index);
+        if(boavista_pf[index].situacao === 'ruim') {
+            icon.innerHTML = `<div class="fa-4x" style="margin-top: 10px;">
+                <i style="color: red;" class="fa-regular fa-thumbs-down"></i>
+            </div>`;
+        } else if (boavista_pf[index].situacao === 'bom') {
+            icon.innerHTML = `<div class="fa-4x" style="margin-top: 10px;">
+                <i style="color: green;" class="fa-regular fa-thumbs-up"></i>
+            </div>`;
+        }
+    }
 
 }
 
 function relatorio(result) {
     if ("boavista" in result.data) {
         get_boavista_pf(result.data.boavista);
+        get_table(result.data.boavista);
         console.log(true);
     } else {
         console.log(false);
@@ -82,7 +73,8 @@ function relatorio(result) {
 }
 
 
-function get_table() {
+function get_table(boavista) {
+    const boavista_pf = new BoaVistaPF(boavista);
     const table = document.createElement('table');
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
@@ -102,17 +94,27 @@ function get_table() {
     row.appendChild(heading_2);
     thead.appendChild(row);
 
-    const indices_table = ['Registros de Débito', 'Protestos', 'Consultas Anteriores', 'Cheques Devoluções Informadas Pelo Usuário', 'Cheques Sem Fundo',
-        'Cheque Sustado Motivo 21'];
+   
+    const indices_table = ['protestos', 'debitos_lista', 'consultas_anteriores_lista'];    
 
     for (let i = 0; i < indices_table.length; i++) {
         let row_1 = document.createElement('tr');
         let cell_1 = document.createElement('td');
         cell_1.innerHTML = indices_table[i];
+        let cell_2 = document.createElement('td');
+        cell_2.innerHTML = boavista_pf[indices_table[i]].total;
+        
+        if(indices_table[i] === 'protestos') {
+            cell_1.innerHTML = 'Protestos';
+        } else if(indices_table[i] === 'debitos_lista') {
+            cell_1.innerHTML = 'Registros de Débito';
+        } else if (indices_table[i] === 'consultas_anteriores_lista') {
+            cell_1.innerHTML = 'Consultas Anteriores';
+        } 
 
         row_1.appendChild(cell_1);
+        row_1.appendChild(cell_2);
         tbody.appendChild(row_1);
     }
 }
 
-get_table();

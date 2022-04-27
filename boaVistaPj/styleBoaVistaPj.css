@@ -121,6 +121,7 @@ body {
 
 .container-boa-vista .container-boa-vista-2 .containers {
     border: 1px solid black;
+    border-radius: 5px;
     margin-left: 10px;
     display: flex;
     justify-content: center;
@@ -130,4 +131,31 @@ body {
     width: 200px;
     text-align: center;
 }
+
+#container-resumo-boavista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid black;
+    background-color: #333;
+    color: white;
+}
+
+table th,
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+table tr,
+td {
+    border: 1px solid black;
+}
+
 

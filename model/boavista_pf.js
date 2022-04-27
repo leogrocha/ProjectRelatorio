@@ -5,6 +5,7 @@ export default class BoaVistaPF {
 
         this.descricao = boavista[1].descricao;
         this.protestos = this.descricao.protestos;
-        this.debito_lista = this.descricao.debitos_lista;
+        this.debitos_lista = this.descricao.debitos_lista;
+        this.consultas_anteriores_lista = this.descricao.consultas_anteriores_lista;
     }
 }
