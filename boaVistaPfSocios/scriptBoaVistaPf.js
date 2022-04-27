@@ -1,26 +1,5 @@
 import BoaVistaPF from "../model/boavista_pf.js";
-
-var raw = {
-    "balanco": ["https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf", "https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf"],
-    "balanco_anterior": ["https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf"],
-    "dre": ["https://server.ectarepay.com.br/ectareArquivos/DRE.pdf"],
-    "dre_anterior": ["https://server.ectarepay.com.br/ectareArquivos/DRE.pdf"],
-    "boavista": ["https://server.ectarepay.com.br/ectareArquivos/bomdia.json", "https://server.ectarepay.com.br/ectareArquivos/RenataOliveira.json"]
-};
-
-console.log(raw.balanco.length);
-console.log(raw)
-var requestOptions = {
-    headers: {
-        "Accept": "application/json, text/javascript, /; q=0.01",
-        "Access-Control-Allow-Headers": "Content-Type",
-        'Content-Type': 'application/json; charset=UTF-8'
-    },
-    method: 'POST',
-    body: JSON.stringify(raw),
-    redirect: 'follow',
-    cache: 'no-cache'
-};
+import requestOptions from "../model/requestOptions.js";
 
 const BASE_URL = "http://analisededados.ectare.com.br/relatorio";
 

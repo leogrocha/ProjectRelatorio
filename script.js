@@ -1,27 +1,29 @@
 import Liquidez from './model/liquidez.js';
+import raw from './model/raw.js';
+import requestOptions from './model/requestOptions.js';
 
-var raw = {
-    "balanco": ["https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf", "https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf"],
-    "balanco_anterior": ["https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf"],
-    "dre": ["https://server.ectarepay.com.br/ectareArquivos/DRE.pdf"],
-    "dre_anterior": ["https://server.ectarepay.com.br/ectareArquivos/DRE.pdf"],
-    "boavista": ["https://server.ectarepay.com.br/ectareArquivos/bomdia.json", "https://server.ectarepay.com.br/ectareArquivos/RenataOliveira.json"]
-};
+// var raw = {
+//     "balanco": ["https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf", "https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf"],
+//     "balanco_anterior": ["https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf"],
+//     "dre": ["https://server.ectarepay.com.br/ectareArquivos/DRE.pdf"],
+//     "dre_anterior": ["https://server.ectarepay.com.br/ectareArquivos/DRE.pdf"],
+//     "boavista": ["https://server.ectarepay.com.br/ectareArquivos/bomdia.json", "https://server.ectarepay.com.br/ectareArquivos/RenataOliveira.json"]
+// };
 
 
 console.log(raw.balanco.length);
 console.log(raw)
-var requestOptions = {
-    headers: {
-        "Accept": "application/json, text/javascript, /; q=0.01",
-        "Access-Control-Allow-Headers": "Content-Type",
-        'Content-Type': 'application/json; charset=UTF-8'
-    },
-    method: 'POST',
-    body: JSON.stringify(raw),
-    redirect: 'follow',
-    cache: 'no-cache'
-};
+// var requestOptions = {
+//     headers: {
+//         "Accept": "application/json, text/javascript, /; q=0.01",
+//         "Access-Control-Allow-Headers": "Content-Type",
+//         'Content-Type': 'application/json; charset=UTF-8'
+//     },
+//     method: 'POST',
+//     body: JSON.stringify(raw),
+//     redirect: 'follow',
+//     cache: 'no-cache'
+// };
 
 const BASE_URL = "http://analisededados.ectare.com.br/relatorio";
 
@@ -98,23 +100,26 @@ function formatLocale(value) {
     return value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
 }
 
-function get_table(result) {
+function get_table() {
     // Criando a tabela
     let table = document.createElement('table');
     let thead = document.createElement('thead');
     let tbody = document.createElement('tbody');
     const indices_table = ['ativo', 'ativo_circulante', 'ativo_nao_circulante', 'disponibilidades', 'estoques', 'imobilizado',
-     'obrigacoes_a_longo_prazo', 'passivo_circulante', 'passivo_nao_circulante', 'patrimonio_liquido', 'realizavel_a_longo_prazo'];
+        'obrigacoes_a_longo_prazo', 'passivo_circulante', 'passivo_nao_circulante', 'patrimonio_liquido', 'realizavel_a_longo_prazo'];
 
     table.appendChild(thead);
     table.appendChild(tbody);
 
     document.getElementById('container-variaveis').appendChild(table);
 
+    let row = document.createElement('tr');
+    let heading_1 = document.createElement('th');
+    heading_1.innerHTML = '';
+
+    row.appendChild(heading_1);
+
     for (let i = 0; i < raw.balanco.length; i++) {
-        let row = document.createElement('tr');
-        let heading_1 = document.createElement('th');
-        heading_1.innerHTML = '';
         let heading_2 = document.createElement('th');
         heading_2.innerHTML = 'Jan/Mar';
         let heading_3 = document.createElement('th');
@@ -124,24 +129,27 @@ function get_table(result) {
         let heading_5 = document.createElement('th');
         heading_5.innerHTML = 'Out/Dez';
 
-        row.appendChild(heading_1);
         row.appendChild(heading_2);
         row.appendChild(heading_3);
         row.appendChild(heading_4);
         row.appendChild(heading_5);
         thead.appendChild(row);
-
-        
-        for (let j = 0; j < indices_table.length; j++) {
-            let row_1 = document.createElement('tr');
-            let cell_1 = document.createElement('td');
-            cell_1.innerHTML = indices_table[j];
-    
-            row_1.appendChild(cell_1);
-            tbody.appendChild(row_1);
-        }
-
     }
+
+    for (let j = 0; j < indices_table.length; j++) {
+        let row_1 = document.createElement('tr');
+        let cell_1 = document.createElement('td');
+        cell_1.innerHTML = indices_table[j];
+        row_1.appendChild(cell_1);
+
+        tbody.appendChild(row_1);
+    }
+
+    // const indices = new Liquidez(liquidez_balanco, dre);
+
+    // for(let k = 0; k < 4; k++){
+    //     document.getElementById(`ativo-${k}`).innerHTML = indices.liquidez_balanco[i].liquidez_variaveis.ativo;
+    // }
 }
 
 
