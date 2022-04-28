@@ -91,7 +91,7 @@ function get_table_consultas(boavista) {
     
     const qtde_periodos = boavista_pj.periodo.periodo.length;
     
-    for(let i = qtde_periodos-1; i > 0;i--){
+    for(let i = qtde_periodos-1; i >= 0;i--){
         let heading_3 = document.createElement('th');
         heading_3.innerHTML = boavista_pj.periodo.periodo[i].mes;
         row.appendChild(heading_3);
@@ -105,7 +105,7 @@ function get_table_consultas(boavista) {
     row_1.appendChild(item1);
     row_1.appendChild(item2);
 
-    for(let j = qtde_periodos-1; j > 0;j--){
+    for(let j = qtde_periodos-1; j >= 0;j--){
         let item3 = document.createElement('td');
         item3.innerHTML = boavista_pj.periodo.periodo[j].Quantidade;
         row_1.appendChild(item3);
