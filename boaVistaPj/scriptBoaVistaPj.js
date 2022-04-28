@@ -93,30 +93,73 @@ function get_table_consultas(boavista) {
     
     for(let i = qtde_periodos-1; i >= 0;i--){
         let heading_3 = document.createElement('th');
+        let mes = (boavista_pj.periodo.periodo[i].mes).substring(0,2);
+        let ano = (boavista_pj.periodo.periodo[i].mes).substring(5,7);
+
+        if(ano.length === 1){
+            ano = '2' + ano;
+        }
+        
         heading_3.innerHTML = boavista_pj.periodo.periodo[i].mes;
+
+
+        switch(mes){
+            case '1-':
+                heading_3.innerHTML = 'Jan.'+ano;
+                break;
+            case '2-':
+                heading_3.innerHTML = 'Fev.'+ano;
+                break;
+            case '3-':
+                heading_3.innerHTML = 'Mar.'+ano;
+                break;
+            case '4-':
+                heading_3.innerHTML = 'Abr.'+ano;
+                break;
+            case '5-':
+                heading_3.innerHTML = 'Mai.'+ano;
+                break;
+            case '6-':
+                heading_3.innerHTML = 'Jun.'+ano;
+                break;
+            case '7-':
+                heading_3.innerHTML = 'Jul.'+ano;
+                break;
+            case '8-':
+                heading_3.innerHTML = 'Ago.'+ano;
+                break;
+            case '9-':
+                heading_3.innerHTML = 'Set.'+ano;
+                break;
+            case '10':
+                heading_3.innerHTML = 'Out.'+ano;
+                break;
+            case '11':
+                heading_3.innerHTML = 'Nov.'+ano;
+                break;
+            case '12':
+                heading_3.innerHTML = 'Dez.'+ano;
+                break;
+        }
         row.appendChild(heading_3);
     }
     
-    let item1 = document.createElement('td');
-    item1.innerHTML = 'Consultas';
-    let item2 = document.createElement('td');
-    item2.innerHTML = boavista_pj.periodo.quantidade;
+    let itemConsulta = document.createElement('td');
+    itemConsulta.innerHTML = 'Consultas';
+    let itemQuantidade = document.createElement('td');
+    itemQuantidade.innerHTML = boavista_pj.periodo.quantidade;
 
-    row_1.appendChild(item1);
-    row_1.appendChild(item2);
+    row_1.appendChild(itemConsulta);
+    row_1.appendChild(itemQuantidade);
 
     for(let j = qtde_periodos-1; j >= 0;j--){
-        let item3 = document.createElement('td');
-        item3.innerHTML = boavista_pj.periodo.periodo[j].Quantidade;
-        row_1.appendChild(item3);
+        let itemPeriodo = document.createElement('td');
+        itemPeriodo.innerHTML = boavista_pj.periodo.periodo[j].Quantidade;
+        row_1.appendChild(itemPeriodo);
     }
-
 
     thead.appendChild(row);
     tbody.appendChild(row_1);
 }
-
-
-
 
 
