@@ -82,6 +82,25 @@ body {
     padding: 5px;
 }
 
+.container-boa-vista {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2px;
+    width: 60vw;
+    margin: 0px 20vh 0px 20vw;
+}
+
+#probabilidade {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    flex-direction: column;
+    right: 10px;
+    width: 50vw;
+}
+
 .container-boa-vista .container-boa-vista-1 {
     display: flex;
     justify-content: center;
@@ -90,8 +109,43 @@ body {
     
 }
 
+.container-boa-vista .container-boa-vista-1 .container-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px 50px 0px 50px;
+    width: 40vh;
+}
+
+.container-boa-vista .container-boa-vista-1 .container-score .h1-score {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: lightgreen;
+    width: 100%;
+    text-align: center;
+}
+
+.container-boa-vista .container-boa-vista-1 .container-score #score {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.container-boa-vista .container-boa-vista-1 .container-score #texto {
+    font-size: 18px;
+    margin: 10px;
+    width: 100%;
+    text-align: center;
+}
+
 .container-boa-vista .container-boa-vista-1 .container-medidor {
     border: 1px solid black;
+    right: 10px;
+
 }
 
 .container-boa-vista .container-boa-vista-1 .container-medidor .medidor {

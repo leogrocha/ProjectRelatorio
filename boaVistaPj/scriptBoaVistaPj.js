@@ -28,6 +28,9 @@ function get_boavista_pj(boavista) {
     const texto = document.getElementById('texto');
     texto.innerHTML = boavista_pj.score.texto;
 
+    const probabilidade = document.getElementById('probabilidade');
+    probabilidade.innerHTML += "Probabilidade de Inadimplência " + (boavista_pj.score.probabilidade).toFixed(1) + "%";
+
 
     var medidor = document.querySelector(".container-medidor");
 
