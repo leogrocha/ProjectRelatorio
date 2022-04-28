@@ -7,5 +7,7 @@ export default class BoaVistaPJ {
         this.cheques_sustados = boavista[0].descricao.cheques_sustados;
         this.cheques_sem_fundo = boavista[0].descricao.cheques_sem_fundo;
         this.cheques_devolvidos_informados_usuario = boavista[0].descricao.cheques_devolvidos_informados_usuario;
+
+        this.periodo = boavista[0].consultas;
     }
 }

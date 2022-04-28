@@ -59,6 +59,7 @@ function get_boavista_pj(boavista) {
 function relatorio(result) {
     if ("boavista" in result.data) {
         get_boavista_pj(result.data.boavista);
+        get_table_consultas(result.data.boavista);
         console.log(true);
     } else {
         console.log(false);
@@ -66,10 +67,11 @@ function relatorio(result) {
 }
 
 
-function get_table() {
+function get_table_consultas(boavista) {
     const table = document.createElement('table');
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
+    const boavista_pj = new BoaVistaPJ(boavista);
 
     table.appendChild(thead);
     table.appendChild(tbody);
@@ -79,23 +81,42 @@ function get_table() {
     let row = document.createElement('tr');
     let heading_1 = document.createElement('th');
     heading_1.innerHTML = 'Descrição';
-    let heading_2 = document.createElement('th');
-    heading_2.innerHTML = 'Observações';
-
     row.appendChild(heading_1);
+    let row_1 = document.createElement('tr');
+    
+    
+    let heading_2 = document.createElement('th');
+    heading_2.innerHTML = 'Total/Pont.';
     row.appendChild(heading_2);
-    thead.appendChild(row);
-
-    const indices_table = [];
-
-    for (let i = 0; i < indices_table.length; i++) {
-        let row_1 = document.createElement('tr');
-        let cell_1 = document.createElement('td');
-        cell_1.innerHTML = indices_table[i];
-
-        row_1.appendChild(cell_1);
-        tbody.appendChild(row_1);
+    
+    const qtde_periodos = boavista_pj.periodo.periodo.length;
+    
+    for(let i = qtde_periodos-1; i > 0;i--){
+        let heading_3 = document.createElement('th');
+        heading_3.innerHTML = boavista_pj.periodo.periodo[i].mes;
+        row.appendChild(heading_3);
     }
+    
+    let item1 = document.createElement('td');
+    item1.innerHTML = 'Consultas';
+    let item2 = document.createElement('td');
+    item2.innerHTML = boavista_pj.periodo.quantidade;
+
+    row_1.appendChild(item1);
+    row_1.appendChild(item2);
+
+    for(let j = qtde_periodos-1; j > 0;j--){
+        let item3 = document.createElement('td');
+        item3.innerHTML = boavista_pj.periodo.periodo[j].Quantidade;
+        row_1.appendChild(item3);
+    }
+
+
+    thead.appendChild(row);
+    tbody.appendChild(row_1);
 }
 
-get_table();
+
+
+
+
