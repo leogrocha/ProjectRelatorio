@@ -9,5 +9,6 @@ export default class BoaVistaPJ {
         this.cheques_devolvidos_informados_usuario = boavista[0].descricao.cheques_devolvidos_informados_usuario;
 
         this.periodo = boavista[0].consultas;
+        this.descricao = boavista[0].descricao;
     }
 }

@@ -158,8 +158,58 @@ function get_table_consultas(boavista) {
         row_1.appendChild(itemPeriodo);
     }
 
+    let row_pendencias_restricoes = document.createElement('tr');
+    let itemPendencias_restricoes = document.createElement('td');
+    itemPendencias_restricoes.innerHTML = 'Pendências e restrições financeiras';
+    let resultPendencias_restricoes = document.createElement('td');
+    resultPendencias_restricoes.innerHTML = boavista_pj.descricao.pendencias_restricoes.total;
+
+    row_pendencias_restricoes.appendChild(itemPendencias_restricoes);
+    row_pendencias_restricoes.appendChild(resultPendencias_restricoes).colSpan = qtde_periodos + 1;
+
+    let row_cheques_sem_fundo = document.createElement('tr');
+    let itemCheques_sem_fundo = document.createElement('td');
+    itemCheques_sem_fundo.innerHTML = 'Cheques sem fundo';
+    let resultCheques_sem_fundo = document.createElement('td');
+    resultCheques_sem_fundo.innerHTML = boavista_pj.descricao.cheques_sem_fundo.total;
+
+    row_cheques_sem_fundo.appendChild(itemCheques_sem_fundo);
+    row_cheques_sem_fundo.appendChild(resultCheques_sem_fundo).colSpan = qtde_periodos + 1;
+
+    let row_cheques_sustados = document.createElement('tr');
+    let itemCheques_sustados = document.createElement('td');
+    itemCheques_sustados.innerHTML = 'Cheques sustados motivo 21';
+    let resultCheques_sustados = document.createElement('td');
+    resultCheques_sustados.innerHTML = boavista_pj.descricao.cheques_sustados.total;
+
+    row_cheques_sustados.appendChild(itemCheques_sustados);
+    row_cheques_sustados.appendChild(resultCheques_sustados).colSpan = qtde_periodos + 1;
+
+    let row_cheques_devolvidos_informados_usuario = document.createElement('tr');
+    let itemCheques_devolvidos_informados_usuario = document.createElement('td');
+    itemCheques_devolvidos_informados_usuario.innerHTML = 'Cheques devolvidos informados pelo usuário';
+    let resultCheques_devolvidos_informados_usuario = document.createElement('td');
+    resultCheques_devolvidos_informados_usuario.innerHTML = boavista_pj.descricao.cheques_devolvidos_informados_usuario.total;
+
+    row_cheques_devolvidos_informados_usuario.appendChild(itemCheques_devolvidos_informados_usuario);
+    row_cheques_devolvidos_informados_usuario.appendChild(resultCheques_devolvidos_informados_usuario).colSpan = qtde_periodos + 1;
+
+    let row_protestos = document.createElement('tr');
+    let itemProtestos = document.createElement('td');
+    itemProtestos.innerHTML = 'Protestos';
+    let resultProtestos = document.createElement('td');
+    resultProtestos.innerHTML = boavista_pj.descricao.protestos.total;
+
+    row_protestos.appendChild(itemProtestos);
+    row_protestos.appendChild(resultProtestos).colSpan = qtde_periodos + 1;
+
     thead.appendChild(row);
     tbody.appendChild(row_1);
+    tbody.appendChild(row_pendencias_restricoes);
+    tbody.appendChild(row_cheques_sem_fundo);
+    tbody.appendChild(row_cheques_sustados);
+    tbody.appendChild(row_cheques_devolvidos_informados_usuario);
+    tbody.appendChild(row_protestos);
 }
 
 
