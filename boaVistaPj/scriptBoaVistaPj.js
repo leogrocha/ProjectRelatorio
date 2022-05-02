@@ -34,7 +34,9 @@ function get_boavista_pj(boavista) {
 
     var medidor = document.querySelector(".container-medidor");
 
-    const setUrl = `https://server.sistemaagely.com.br/GraficoPonteiro?valor=100&maximo=1000`;
+    const valor_score = parseInt(boavista_pj.score.score);
+
+    const setUrl = `https://server.sistemaagely.com.br/GraficoPonteiro?valor=${valor_score}&maximo=1000`;
     medidor.innerHTML += `
                 <img src="${setUrl}" alt="Medidor" style="width: 300px; heigth: 300px">
     `;
