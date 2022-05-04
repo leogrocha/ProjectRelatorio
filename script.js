@@ -2,9 +2,7 @@ import Liquidez from './model/liquidez.js';
 import raw from './model/raw.js';
 import requestOptions from './model/requestOptions.js';
 import Dre from './model/dre.js';
-
-console.log(raw.balanco.length);
-console.log(raw)
+import LiquidezAnterior from './model/liquidez_anterior.js';
 
 const BASE_URL = "http://analisededados.ectare.com.br/relatorio";
 
@@ -15,7 +13,6 @@ function get_data() {
             .then(result => {
                 console.log(result)
                 relatorio(result)
-                console.log(result.data.liquidez_balanco);
                 
             })
     } catch (error) {
@@ -123,24 +120,20 @@ function get_dre(dre) {
             </div>
         `
     }
-
-    
-
-
 }
 
 function formatLocale(value) {
     return value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
 }
 
-function get_table(liquidez_balanco) {
+function get_table(balanco_anterior) {
     // Criando a tabela
     let table = document.createElement('table');
     let thead = document.createElement('thead');
     let tbody = document.createElement('tbody');
     const indices_table = ['ativo', 'ativo_circulante', 'ativo_nao_circulante', 'disponibilidades', 'estoques', 'imobilizado',
         'obrigacoes_a_longo_prazo', 'passivo_circulante', 'passivo_nao_circulante', 'patrimonio_liquido', 'realizavel_a_longo_prazo'];
-    const indices = new Liquidez(liquidez_balanco);
+    const indices = new LiquidezAnterior(balanco_anterior);
 
     table.appendChild(thead);
     table.appendChild(tbody);
@@ -153,7 +146,7 @@ function get_table(liquidez_balanco) {
 
     row.appendChild(heading_1);
 
-    for (let i = 0; i < raw.balanco.length; i++) {
+    for (let i = 0; i < raw.balanco_anterior.length; i++) {
         let heading_2 = document.createElement('th');
         heading_2.innerHTML = 'Jan/Mar';
         let heading_3 = document.createElement('th');
@@ -174,19 +167,42 @@ function get_table(liquidez_balanco) {
     for (let linha = 0; linha < indices_table.length; linha++) {
         const row_1 = document.createElement('tr');
         let cell_1 = document.createElement('td');
+        
         cell_1.innerHTML = indices_table[linha];
+        if(indices_table[linha] === 'ativo')
+            cell_1.innerHTML = 'Ativo';
+        else if(indices_table[linha] === 'ativo_circulante')
+            cell_1.innerHTML = 'Ativo Circulante';
+        else if(indices_table[linha] === 'ativo_nao_circulante')
+            cell_1.innerHTML = 'Ativo Não Circulante';
+        else if(indices_table[linha] === 'disponibilidades')
+            cell_1.innerHTML = 'Disponibilidades';
+        else if(indices_table[linha] === 'estoques')
+            cell_1.innerHTML = 'Estoques';
+        else if(indices_table[linha] === 'imobilizado')
+            cell_1.innerHTML = 'Imobilizado';
+        else if(indices_table[linha] === 'obrigacoes_a_longo_prazo')
+            cell_1.innerHTML = 'Obrigações a Longo Prazo';
+        else if(indices_table[linha] === 'passivo_circulante')
+            cell_1.innerHTML = 'Passivo Circulante';
+        else if(indices_table[linha] === 'passivo_nao_circulante')
+            cell_1.innerHTML = 'Passivo Não Circulante';
+        else if(indices_table[linha] === 'patrimonio_liquido')
+            cell_1.innerHTML = 'Patrimônio Líquido';
+        else if(indices_table[linha] === 'realizavel_a_longo_prazo')
+            cell_1.innerHTML = 'Realizavel a Longo Prazo';
         row_1.appendChild(cell_1);
 
-        for (let coluna = 0; coluna < raw.balanco.length; coluna++) {
+        for (let coluna = 0; coluna < raw.balanco_anterior.length; coluna++) {
             
             const cells_0 = document.createElement('td');
             const cells_1 = document.createElement('td');
             const cells_2 = document.createElement('td');
             const cells_3 = document.createElement('td');
-            cells_0.innerHTML = `R$ ${indices.liquidez_variaveis[indices_table[linha]][0].toFixed(2)}`;
-            cells_1.innerHTML = `R$ ${indices.liquidez_variaveis[indices_table[linha]][1].toFixed(2)}`;
-            cells_2.innerHTML = `R$ ${indices.liquidez_variaveis[indices_table[linha]][2].toFixed(2)}`;
-            cells_3.innerHTML = `R$ ${indices.liquidez_variaveis[indices_table[linha]][3].toFixed(2)}`;
+            cells_0.innerHTML = indices.liquidez_variaveis[indices_table[linha]][0].toFixed(2).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+            cells_1.innerHTML = indices.liquidez_variaveis[indices_table[linha]][1].toFixed(2).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+            cells_2.innerHTML = indices.liquidez_variaveis[indices_table[linha]][2].toFixed(2).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+            cells_3.innerHTML = indices.liquidez_variaveis[indices_table[linha]][3].toFixed(2).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
             
             row_1.appendChild(cells_0);
             row_1.appendChild(cells_1);
@@ -207,13 +223,22 @@ function get_table(liquidez_balanco) {
     console.log(indices.liquidez_variaveis.ativo[3]);
 }
 
+function get_indicadores_performance() {
+    const current_year = new Date();
+    
+    const year = document.getElementById('year');
+    year.innerHTML = current_year.getFullYear();
+}
+
+get_indicadores_performance();
+
 
 
 function relatorio(result) {
     if ("liquidez_balanco" in result.data) {
         get_liquidez(result.data.liquidez_balanco);
-        console.log(result.data.liquidez_balanco.length);
-        get_table(result.data.liquidez_balanco);
+        console.log(result.data.balanco_anterior.length);
+        get_table(result.data.balanco_anterior);
     }
     if ("dre" in result.data) {
         get_dre(result.data.dre);

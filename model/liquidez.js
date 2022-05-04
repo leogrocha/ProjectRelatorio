@@ -1,5 +1,5 @@
 export default class Liquidez{
-  constructor (liquidez_balanco, dre){
+  constructor (liquidez_balanco){
       for(let i = 0; i < liquidez_balanco.length; i++){
         this.liquidez_indices = liquidez_balanco[i].liquidez_indices
         this.liquidez_corrente = this.liquidez_indices.indice_liquidez_corrente;
