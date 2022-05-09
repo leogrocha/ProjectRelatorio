@@ -2,7 +2,25 @@ import Liquidez from './model/liquidez.js';
 import LiquidezAnterior from './model/liquidez_anterior.js';
 import Dre from './model/dre.js';
 import DreAnterior from './model/dre_anterior.js';
-import requestOptions from './model/requestOptions.js';
+
+const raw = {
+    "balanco": ["https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf"],
+    "balanco_anterior": ["https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf"],
+    "dre": ["https://server.ectarepay.com.br/ectareArquivos/DRE.pdf"],
+    "dre_anterior": ["https://server.ectarepay.com.br/ectareArquivos/DRE.pdf"],
+}
+
+const requestOptions = {
+    headers: {
+        "Accept": "application/json, text/javascript, /; q=0.01",
+        "Access-Control-Allow-Headers": "Content-Type",
+        'Content-Type': 'application/json; charset=UTF-8'
+    },
+    method: 'POST',
+    body: JSON.stringify(raw),
+    redirect: 'follow',
+    cache: 'no-cache'
+};
 
 const BASE_URL = "http://analisededados.ectare.com.br/relatorio";
 

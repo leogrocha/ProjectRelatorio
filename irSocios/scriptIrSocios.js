@@ -19,6 +19,10 @@ function get_data() {
 
 get_data();
 
+function formatLocale(value) {
+    return value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+}
+
 function get_dados_pessoa(irpf) {
     const class_irpf = new Irpf(irpf);
 
@@ -79,6 +83,7 @@ function get_table_rendimentos(irpf) {
     const table = document.createElement('table');
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
+    const class_irpf = new Irpf(irpf);
     
 
     table.appendChild(thead);
@@ -94,15 +99,13 @@ function get_table_rendimentos(irpf) {
 
     const row_2 = document.createElement('tr');
     const td_tributaveis = document.createElement('td');
-    td_tributaveis.innerText = 'Tributáveis';
+    td_tributaveis.innerText = `Tributáveis - ${formatLocale(class_irpf.rendimentos_tributaveis.total)}`;
     const td_nao_tributaveis = document.createElement('td');
-    td_nao_tributaveis.innerText = 'Não Tributáveis';
+    td_nao_tributaveis.innerText = `Não Tributáveis - ${formatLocale(class_irpf.rendimentos_nao_tributaveis.total)}`;
     row_2.appendChild(td_tributaveis);
     row_2.appendChild(td_nao_tributaveis);
     tbody.appendChild(row_2);
 }
-
-get_table_rendimentos();
 
 function get_table_agronegocio() {
     const table = document.createElement('table');
@@ -147,5 +150,6 @@ function relatorio(result) {
     if ("irpf" in result.data) {
         get_dados_pessoa(result.data.irpf);
         get_resumo_irpf(result.data.irpf)
+        get_table_rendimentos(result.data.irpf);
     }
 }   

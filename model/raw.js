@@ -7,4 +7,5 @@ const raw = {
     "boavista": ["https://server.ectarepay.com.br/ectareArquivos/bomdia.json","https://server.ectarepay.com.br/ectareArquivos/RenataOliveira.json"],
 }
 
+
 export default raw;

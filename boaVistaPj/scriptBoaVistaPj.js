@@ -1,5 +1,20 @@
 import BoaVistaPJ from "../model/boavista_pj.js";
-import requestOptions from "../model/requestOptions.js";
+
+const raw = {
+    "boavista": ["https://server.ectarepay.com.br/ectareArquivos/bomdia.json"],
+}
+
+const requestOptions = {
+    headers: {
+        "Accept": "application/json, text/javascript, /; q=0.01",
+        "Access-Control-Allow-Headers": "Content-Type",
+        'Content-Type': 'application/json; charset=UTF-8'
+    },
+    method: 'POST',
+    body: JSON.stringify(raw),
+    redirect: 'follow',
+    cache: 'no-cache'
+};
 
 const BASE_URL = "http://analisededados.ectare.com.br/relatorio";
 
@@ -18,6 +33,8 @@ function get_data() {
 }
 
 get_data();
+
+
 
 function get_boavista_pj(boavista) {
     const boavista_pj = new BoaVistaPJ(boavista);
