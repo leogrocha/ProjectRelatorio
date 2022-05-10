@@ -191,6 +191,16 @@ function get_table_mov_rebanho(irpf) {
         const row_3 = document.createElement('tr');
         const dados_atividade = document.createElement('td');
         dados_atividade.innerText = indices_atividade[linha];
+        if(indices_atividade[linha] === 'asininos'){
+            dados_atividade.innerText = 'Asino, esquinos e muares';
+        } else if(indices_atividade[linha] === 'bovinos'){
+            dados_atividade.innerText = 'Bovinos e bufalinos';
+        } else if(indices_atividade[linha] === 'caprinos'){
+            dados_atividade.innerText = 'Caprinos e ovinos';
+        } else if(indices_atividade[linha] === 'outros'){
+            dados_atividade.innerText = 'Outros';
+        }
+
         row_3.appendChild(dados_atividade);
         tbody.appendChild(row_3);
 
