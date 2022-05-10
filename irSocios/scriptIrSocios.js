@@ -122,10 +122,11 @@ function get_table_rendimentos(irpf) {
     tbody.appendChild(row_2);
 }
 
-function get_table_agronegocio() {
+function get_table_agronegocio(irpf) {
     const table = document.createElement('table');
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
+    const class_irpf = new Irpf(irpf);
 
     table.appendChild(thead);
     table.appendChild(tbody);
@@ -137,10 +138,30 @@ function get_table_agronegocio() {
     th_agronegocio.innerText = 'Agronegócio';
     row_1.appendChild(th_agronegocio).colSpan = 2;
     thead.appendChild(row_1);
+
+    const row_2 = document.createElement('tr');
+    const td_receita_bruta = document.createElement('td');
+    td_receita_bruta.innerText = `Receita Bruta - ${formatLocale(class_irpf.apuracao.receita_bruta)}`;
+    const td_bens_atividade_rural = document.createElement('td');
+    td_bens_atividade_rural.innerText = `Bens de Atividade Rural -`;
+    const row_3 = document.createElement('tr');
+    const td_despesas_custeio_investimento = document.createElement('td');
+    td_despesas_custeio_investimento.innerText = `Despesas de Custeio e Investimento - ${formatLocale(class_irpf.apuracao.despesas_custeio_investimento)}`;
+    const dividas_vinculadas_atividade_rural = document.createElement('td');
+    dividas_vinculadas_atividade_rural.innerText = `Dívidas Vinculadas à Atividade Rural - `;
+    const row_4 = document.createElement('tr');
+    const td_resultado = document.createElement('td');
+    td_resultado.innerText = `Resultado - ${formatLocale(class_irpf.apuracao.resultado)}`;
+
+    row_2.appendChild(td_receita_bruta);
+    row_2.appendChild(td_bens_atividade_rural);
+    row_3.appendChild(td_despesas_custeio_investimento);
+    row_3.appendChild(dividas_vinculadas_atividade_rural);
+    row_4.appendChild(td_resultado).colSpan=2;
+    tbody.appendChild(row_2);
+    tbody.appendChild(row_3);
+    tbody.appendChild(row_4);
 }
-
-get_table_agronegocio();
-
 
 function get_table_mov_rebanho(irpf) {
     const table = document.createElement('table');
@@ -223,5 +244,6 @@ function relatorio(result) {
         get_resumo_irpf(result.data.irpf)
         get_table_rendimentos(result.data.irpf);
         get_table_mov_rebanho(result.data.irpf);
+        get_table_agronegocio(result.data.irpf);
     }
 }   

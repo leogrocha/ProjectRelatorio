@@ -121,7 +121,9 @@ body {
     align-items: center;
     flex-direction: column;
     margin-top: 20px;
+    width: 100%;
 }
+
 
 table tr th {
     font-weight: bold;
