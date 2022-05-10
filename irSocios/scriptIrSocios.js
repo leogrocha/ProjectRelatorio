@@ -1,5 +1,20 @@
-import requestOptions from "../model/requestOptions.js";
 import Irpf from "../model/irpf.js";
+
+const raw = {
+    "irpf": ["https://server.ectarepay.com.br/ectareArquivos/IR%202020%20Magno.pdf"],
+}
+
+const requestOptions = {
+    headers: {
+        "Accept": "application/json, text/javascript, /; q=0.01",
+        "Access-Control-Allow-Headers": "Content-Type",
+        'Content-Type': 'application/json; charset=UTF-8'
+    },
+    method: 'POST',
+    body: JSON.stringify(raw),
+    redirect: 'follow',
+    cache: 'no-cache'
+};
 
 const BASE_URL = "http://analisededados.ectare.com.br/relatorio";
 
@@ -119,7 +134,7 @@ function get_table_agronegocio() {
 
     const row_1 = document.createElement('tr');
     const th_agronegocio = document.createElement('th');
-    th_agronegocio.innerText = 'Rendimentos';
+    th_agronegocio.innerText = 'Agronegócio';
     row_1.appendChild(th_agronegocio).colSpan = 2;
     thead.appendChild(row_1);
 }
@@ -127,10 +142,14 @@ function get_table_agronegocio() {
 get_table_agronegocio();
 
 
-function get_table_mov_rebanho() {
+function get_table_mov_rebanho(irpf) {
     const table = document.createElement('table');
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
+    const class_irpf = new Irpf(irpf);
+
+    const indices_atividade = ['asininos', 'bovinos', 'caprinos', 'outros', 'suinos'];
+    const indices_situacao = ['estoque_inicial','aquisicoes', 'nascimentos', 'consumo_perdas', 'vendas', 'estoque_final' ];
 
     table.appendChild(thead);
     table.appendChild(tbody);
@@ -142,14 +161,57 @@ function get_table_mov_rebanho() {
     th_movRebanho.innerText = 'Movimentação de Rebanho';
     row_1.appendChild(th_movRebanho).colSpan = 7;
     thead.appendChild(row_1);
-}
 
-get_table_mov_rebanho();
+    const row_2 = document.createElement('tr');
+    const atividade = document.createElement('td');
+    atividade.innerText = 'Atividade';
+    const estoque_inicial = document.createElement('td');
+    estoque_inicial.innerText = 'Estoque Inicial';
+    const aquisicoes = document.createElement('td');
+    aquisicoes.innerText = 'Aquisições';
+    const nascimentos = document.createElement('td');
+    nascimentos.innerText = 'Nascimentos';
+    const cons_perdas = document.createElement('td');
+    cons_perdas.innerText = 'Cons/Perdas';
+    const vendas = document.createElement('td');
+    vendas.innerText = 'Vendas';
+    const estoque_final = document.createElement('td');
+    estoque_final.innerText = 'Estoque Final';
+
+    row_2.appendChild(atividade);
+    row_2.appendChild(estoque_inicial);
+    row_2.appendChild(aquisicoes);
+    row_2.appendChild(nascimentos);
+    row_2.appendChild(cons_perdas);
+    row_2.appendChild(vendas);
+    row_2.appendChild(estoque_final);
+    tbody.appendChild(row_2);
+
+    for (let linha = 0; linha < indices_atividade.length; linha++) {
+        const row_3 = document.createElement('tr');
+        const dados_atividade = document.createElement('td');
+        dados_atividade.innerText = indices_atividade[linha];
+        row_3.appendChild(dados_atividade);
+        tbody.appendChild(row_3);
+
+        for(let coluna = 0; coluna < indices_situacao.length; coluna++) {
+            const dados_situacao = document.createElement('td');
+            dados_situacao.innerHTML = class_irpf.movimentacao_rebanho[indices_atividade[linha]][indices_situacao[coluna]];
+            
+            row_3.appendChild(dados_situacao);    
+            tbody.appendChild(row_3);
+        }
+
+    }
+
+    
+}
 
 function relatorio(result) {
     if ("irpf" in result.data) {
         get_dados_pessoa(result.data.irpf);
         get_resumo_irpf(result.data.irpf)
         get_table_rendimentos(result.data.irpf);
+        get_table_mov_rebanho(result.data.irpf);
     }
 }   

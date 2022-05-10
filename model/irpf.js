@@ -13,6 +13,13 @@ export default class Irpf {
         this.rendimentos_tributaveis = irpf[0].rendimentos_tributaveis;
         this.rendimentos_nao_tributaveis = irpf[0].rendimentos_nao_tributaveis;
 
+        this.movimentacao_rebanho = irpf[0].movimentacao_rebanho;
+        this.asininos = this.movimentacao_rebanho.asininos;
+        this.bovinos = this.movimentacao_rebanho.bovinos;
+        this.caprinos = this.movimentacao_rebanho.caprinos;
+        this.outros = this.movimentacao_rebanho.outros;
+        this.suinos = this.movimentacao_rebanho.suinos;
+
         this.exercicio = irpf[0].exercicio;
     }
 }
