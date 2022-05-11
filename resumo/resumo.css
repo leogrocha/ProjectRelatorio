@@ -110,3 +110,205 @@ body {
     font-weight: bold;
     font-size: 18px;
 }  
+
+.container-consulta_credito {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2px;
+    width: 60vw;
+    margin: 0px 20vh 0px 20vw;
+}
+
+#probabilidade_pj {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    flex-direction: column;
+    right: 10px;
+    width: 50vw;
+}
+
+.container-consulta_credito .container-consulta_credito-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 50px 0px 50px;
+    
+}
+
+.container-consulta_credito .container-consulta_credito-1 .container-score_pj {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px 50px 0px 50px;
+    width: 40vh;
+}
+
+.container-consulta_credito .container-consulta_credito-1 .container-score_pj .h1-score_pj {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: lightgreen;
+    width: 100%;
+    text-align: center;
+}
+
+.container-consulta_credito .container-consulta_credito-1 .container-score_pj #score_pj {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.container-consulta_credito .container-consulta_credito-1 .container-score_pj #texto_pj {
+    font-size: 18px;
+    margin: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.container-consulta_credito .container-consulta_credito-1 .container-medidor {
+    right: 10px;
+}
+
+.container-consulta_credito .container-consulta_credito-1 .container-medidor .medidor {
+    width: 10%;
+    height: 10%;
+    border: 1px solid black;
+}
+
+
+
+.container-consulta_credito .container-consulta_credito-1 .container-score_pj {
+    margin-right: 50px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-consulta_credito .container-consulta_credito-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 50px 0px 50px;
+    
+}
+
+.container-consulta_credito .container-consulta_credito-2 .containers {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 150px;
+    width: 200px;
+    text-align: center;
+}
+
+.container_boavista .containers .container-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50vw;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.container_boavista .containers .renda-presumida {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50vw;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.container_boavista .containers .medidor {
+    margin-top: 10px;
+}
+
+.container_boavista .containers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+    padding: 5px;
+}
+
+.container_boavista .container-situacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    width: 200px;
+    height: 150px;
+    text-align: center;
+}
+
+.container_boavista {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.container-title {
+    background-color: lightgreen;
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.renda-presumida .renda-presumida-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 10px 10px 20px;
+    text-align: center;
+}
+
+.renda-presumida .renda-presumida-texto {
+    font-size: 20px;
+    margin: 10px 10px 10px 20px;
+    text-align: center;
+}
+
+#score {
+    font-weight: bold;
+    margin: 10px 0px 10px 0px;
+    font-size: 28px;
+}
+
+#texto {
+    font-size: 18px;
+    margin: 0px 10px 10px 10px;
+}
+
+#texto-probabilidade {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#probabilidade {
+    font-size: 18px;
+    margin-left: 10px;
+    
+}

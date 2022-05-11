@@ -96,6 +96,7 @@ body {
     padding: 2px;
 }
 
+
 .container-resumo-irpf .container1 .situacao {
     display: flex;
     justify-content: center;
@@ -113,6 +114,91 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+}
+
+.container-resumo-irpf .container2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;
+    padding: 2px;
+}
+
+.container-resumo-irpf .container2 #bens_direitos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.container-resumo-irpf .container2 #dividas_onus_reais {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 30px;
+}
+
+.container_graficos {
+    display: grid;
+    grid-template-columns: auto auto;
+    text-align: center;
+}
+
+.container_graficos_1 {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+}
+
+.title_imposto {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.container_graficos_2 {
+    margin-left: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+}
+
+#container_graficos_1_valor, #container_graficos_2_valor {
+    font-size: 22px;
+}
+
+#container_graficos_1_ano, #container_graficos_2_ano {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#container_graficos_1_grafico, #container_graficos_dividas_onus_1_grafico {
+    background-color: yellow;
+}
+
+#container_graficos_2_grafico, #container_graficos_dividas_onus_2_grafico {
+    background-color: lightgreen;
+}
+
+.regra_lucratividade {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .container-dados-consolidados {

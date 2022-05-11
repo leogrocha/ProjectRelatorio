@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link href="../fontawesome/css/all.css" rel="stylesheet">
     <title>E-ctare</title>
 </head>
+
 <body>
     <div class="container">
         <div class="topnav">
@@ -16,7 +18,7 @@
             <a href="../balanceteValidacao/balanceteValidacao.html">Balancete Validação</a>
             <a href="../boaVistaPj/boaVistaPj.html">Boa Vista PJ</a>
             <a href="../boaVistaPfSocios/boaVistaPfSocios.html">Boa Vista PF Sócios</a>
-            <a style="background-color:#ddd; color: black;"  href="./irSocios.html">IR Sócios</a>
+            <a style="background-color:#ddd; color: black;" href="./irSocios.html">IR Sócios</a>
             <a href="../resumo/resumo.html">Resumo</a>
         </div>
 
@@ -25,7 +27,7 @@
             <p id="cpf"></p>
             <p id="exercicio"></p>
             <p id="endereco"></p>
-            
+
         </div>
 
         <div class="title">
@@ -48,13 +50,52 @@
                 </div>
             </div>
 
-            <div class="container-2">
-                <div class="bens-direitos">
+            <div class="container2">
 
+                <div id="bens_direitos">
+                    <h3 class="title_imposto">Bens e Direitos</h3>
+
+                    <div class="container_graficos">
+                        <div class="container_graficos_1">
+                            <p id="container_graficos_1_valor"></p>
+                            <div id="container_graficos_1_grafico">
+
+                            </div>
+                            <p id="container_graficos_1_ano"></p>
+                        </div>
+                        <div class="container_graficos_2">
+                            <p id="container_graficos_2_valor"></p>
+                            <div id="container_graficos_2_grafico">
+                                <div id="container_graficos_2_icons"></div>
+                            </div>
+                            <p id="container_graficos_2_ano"></p>
+                        </div>
+                    </div>
+
+                    <p class="regra_lucratividade">Regra igual da Lucratividade</p>
                 </div>
 
-                <div class="dividas-onus-reais">
-                    
+                <div id="dividas_onus_reais">
+                    <h3 class="title_imposto">Dívidas e ônus reais</h3>
+
+                    <div class="container_graficos">
+                        <div class="container_graficos_1">
+                            <p id="container_graficos_dividas_onus_1_valor"></p>
+                            <div id="container_graficos_dividas_onus_1_grafico">
+                                <div id="container-graficos_dividas_onus_1_icons"></div>
+                            </div>
+                            <p id="container_graficos_dividas_onus_1_ano"></p>
+                        </div>
+                        <div class="container_graficos_2">
+                            <p id="container_graficos_dividas_onus_2_valor"></p>
+                            <div id="container_graficos_dividas_onus_2_grafico">
+                                <div id="container-graficos_dividas_onus_2_icons"></div>
+                            </div>
+                            <p id="container_graficos_dividas_onus_2_ano"></p>
+                        </div>
+                    </div>
+
+                    <p class="regra_lucratividade">Regra igual da Lucratividade</p>
                 </div>
             </div>
 
@@ -80,4 +121,5 @@
 
     <script type="module" src="./scriptIrSocios.js"></script>
 </body>
+
 </html>

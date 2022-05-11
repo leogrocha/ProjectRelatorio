@@ -54,7 +54,7 @@ function get_dados_pessoa(irpf) {
      - ${class_irpf.dados_endereco.cep}`;
 }
 
-function get_resumo_irpf(irpf){
+function get_resumo_irpf(irpf) {
     const class_irpf = new Irpf(irpf);
     const indices_situacao = ['agronegocio'];
 
@@ -92,6 +92,88 @@ function get_resumo_irpf(irpf){
             `
         }
     }
+
+    const ano_anterior = class_irpf.exercicio.substring(31, 36);
+    const ano_corrente = parseInt(class_irpf.exercicio.substring(31, 36));
+    
+    const container_graficos_1_valor = document.getElementById('container_graficos_1_valor');
+    const container_graficos_2_valor = document.getElementById('container_graficos_2_valor');
+    const container_graficos_1_ano = document.getElementById('container_graficos_1_ano');
+    const container_graficos_2_ano = document.getElementById('container_graficos_2_ano');
+
+    container_graficos_1_valor.innerHTML = formatLocale(class_irpf.bens_direitos.bens_e_direitos_anterior);
+    container_graficos_2_valor.innerHTML = formatLocale(class_irpf.bens_direitos.bens_e_direitos_corrente);
+    container_graficos_1_ano.innerHTML = ano_anterior;
+    container_graficos_2_ano.innerHTML = ano_corrente + 1;
+
+    const container_graficos_dividas_onus__1_valor = document.getElementById('container_graficos_dividas_onus_1_valor');
+    const container_graficos_dividas_onus__2_valor = document.getElementById('container_graficos_dividas_onus_2_valor');
+    const container_graficos_dividas_onus__1_ano = document.getElementById('container_graficos_dividas_onus_1_ano');
+    const container_graficos_dividas_onus__2_ano = document.getElementById('container_graficos_dividas_onus_2_ano');
+
+    container_graficos_dividas_onus__1_valor.innerHTML = formatLocale(class_irpf.dividas_onus.dividas_e_onus_reais_anterior);
+    container_graficos_dividas_onus__2_valor.innerHTML = formatLocale(class_irpf.dividas_onus.dividas_e_onus_reais_corrente);
+    container_graficos_dividas_onus__1_ano.innerHTML = ano_anterior;
+    container_graficos_dividas_onus__2_ano.innerHTML = ano_corrente + 1;
+
+    const bens_direitos_anterior = document.getElementById('container_graficos_1_grafico');
+    const bens_direitos_atual = document.getElementById('container_graficos_2_grafico');
+    const bens_direitos_1 = class_irpf.bens_direitos.bens_e_direitos_anterior;
+    const bens_direitos_2 = class_irpf.bens_direitos.bens_e_direitos_corrente;
+    
+    
+    if (bens_direitos_1 > bens_direitos_2) {
+        let porcentagem_diferenca = ((bens_direitos_2 * 100) / bens_direitos_1);
+        let top = (100.00 - porcentagem_diferenca) / 2;
+    
+        console.log(porcentagem_diferenca);
+        bens_direitos_anterior.style.width = '150px';
+        bens_direitos_anterior.style.height = '100px';
+        
+    
+        bens_direitos_atual.style.width = '100px';
+        bens_direitos_atual.style.height = `calc(${porcentagem_diferenca}px)`;
+        bens_direitos_atual.style.position = 'relative';
+        bens_direitos_atual.style.top = `calc(${top}px)`;
+    } else if (bens_direitos_2 > bens_direitos_1) {
+        let porcentagem_diferenca = ((bens_direitos_1 * 100) / bens_direitos_2);
+        let top = (100.00 - porcentagem_diferenca) / 2;
+        console.log(top);
+    
+        bens_direitos_anterior.style.width = '150px';
+        bens_direitos_anterior.style.height = `calc(${porcentagem_diferenca}px)`;
+        bens_direitos_anterior.style.position = 'relative';
+        bens_direitos_anterior.style.top = `calc(${top}px)`;
+        console.log(porcentagem_diferenca);
+    
+        bens_direitos_atual.style.width = '150px';
+        bens_direitos_atual.style.height = '100px';
+        bens_direitos_atual.style.position = 'relative';
+    } else if (bens_direitos_1 === bens_direitos_2 && bens_direitos_1 != 0 && bens_direitos_2 != 0) {
+        bens_direitos_anterior.style.width = '100px';
+        bens_direitos_anterior.style.height = '100px';
+        bens_direitos_anterior.style.backgroundColor = 'red';
+        bens_direitos_anterior.style.position = 'relative';
+    
+        bens_direitos_atual.style.width = '100px';
+        bens_direitos_atual.style.height = '100px';
+        bens_direitos_atual.style.backgroundColor = 'black';
+        bens_direitos_atual.style.position = 'relative';
+    } else if (bens_direitos_1 === 0 && bens_direitos_2 === 0) {
+        bens_direitos_anterior.style.width = '100px';
+        bens_direitos_anterior.style.height = '1px';
+        bens_direitos_anterior.style.backgroundColor = 'red';
+        bens_direitos_anterior.style.position = 'relative';
+    
+        bens_direitos_atual.style.width = '100px';
+        bens_direitos_atual.style.height = '1px';
+        bens_direitos_atual.style.backgroundColor = 'black';
+        bens_direitos_atual.style.position = 'relative';
+    }
+    
+
+
+
 }
 
 function get_table_rendimentos(irpf) {
@@ -99,7 +181,7 @@ function get_table_rendimentos(irpf) {
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
     const class_irpf = new Irpf(irpf);
-    
+
 
     table.appendChild(thead);
     table.appendChild(tbody);
@@ -157,7 +239,7 @@ function get_table_agronegocio(irpf) {
     row_2.appendChild(td_bens_atividade_rural);
     row_3.appendChild(td_despesas_custeio_investimento);
     row_3.appendChild(dividas_vinculadas_atividade_rural);
-    row_4.appendChild(td_resultado).colSpan=2;
+    row_4.appendChild(td_resultado).colSpan = 2;
     tbody.appendChild(row_2);
     tbody.appendChild(row_3);
     tbody.appendChild(row_4);
@@ -170,7 +252,7 @@ function get_table_mov_rebanho(irpf) {
     const class_irpf = new Irpf(irpf);
 
     const indices_atividade = ['asininos', 'bovinos', 'caprinos', 'outros', 'suinos'];
-    const indices_situacao = ['estoque_inicial','aquisicoes', 'nascimentos', 'consumo_perdas', 'vendas', 'estoque_final' ];
+    const indices_situacao = ['estoque_inicial', 'aquisicoes', 'nascimentos', 'consumo_perdas', 'vendas', 'estoque_final'];
 
     table.appendChild(thead);
     table.appendChild(tbody);
@@ -212,30 +294,30 @@ function get_table_mov_rebanho(irpf) {
         const row_3 = document.createElement('tr');
         const dados_atividade = document.createElement('td');
         dados_atividade.innerText = indices_atividade[linha];
-        if(indices_atividade[linha] === 'asininos'){
+        if (indices_atividade[linha] === 'asininos') {
             dados_atividade.innerText = 'Asino, esquinos e muares';
-        } else if(indices_atividade[linha] === 'bovinos'){
+        } else if (indices_atividade[linha] === 'bovinos') {
             dados_atividade.innerText = 'Bovinos e bufalinos';
-        } else if(indices_atividade[linha] === 'caprinos'){
+        } else if (indices_atividade[linha] === 'caprinos') {
             dados_atividade.innerText = 'Caprinos e ovinos';
-        } else if(indices_atividade[linha] === 'outros'){
+        } else if (indices_atividade[linha] === 'outros') {
             dados_atividade.innerText = 'Outros';
         }
 
         row_3.appendChild(dados_atividade);
         tbody.appendChild(row_3);
 
-        for(let coluna = 0; coluna < indices_situacao.length; coluna++) {
+        for (let coluna = 0; coluna < indices_situacao.length; coluna++) {
             const dados_situacao = document.createElement('td');
             dados_situacao.innerHTML = class_irpf.movimentacao_rebanho[indices_atividade[linha]][indices_situacao[coluna]];
-            
-            row_3.appendChild(dados_situacao);    
+
+            row_3.appendChild(dados_situacao);
             tbody.appendChild(row_3);
         }
 
     }
 
-    
+
 }
 
 function relatorio(result) {

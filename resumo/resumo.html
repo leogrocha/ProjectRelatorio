@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./resumo.css">
     <link rel="icon" type="image/png" href="../assets/icon.png">
+    <link href="../fontawesome/css/all.css" rel="stylesheet">
     <title>E-ctare</title>
 </head>
 <body>
@@ -27,7 +28,7 @@
         </div>
 
         <div class="title">
-            <h1 class="h1-title">BOA VISTA</h1>
+            <h1 class="h1-title">BALANÇO E DRE</h1>
         </div>
 
         <div class="container-balanco_dre">
@@ -98,12 +99,97 @@
             <h1 class="h1-title">CONSULTA DE CRÉDITO</h1>
         </div>
 
+        <div class="container-consulta_credito">
+            <div class="container-consulta_credito-1">
+                <div class="container-score_pj">
+                    <h2 class="h1-score_pj">Score</h2>
+                    <p id="score_pj"></p>
+                    <p id="texto_pj"></p>
+                </div>
+
+                <span style="margin-top:100px;">0</span>
+                <div class="container-medidor"></div>
+                <span style="margin-top:100px;">1000</span>
+                
+                
+            </div>
+            <p id="probabilidade_pj"></p>
+
+            <div class="container-consulta_credito-2">
+                <div class="containers">
+                    <h3>Pendências e Restrições Financeiras</h3>
+                    <div id="pendencias_restricoes"></div>
+                </div>
+
+                <div class="containers">
+                    <h3>Protestos</h3>
+                    <div id="protestos_pj"></div>
+                </div>
+
+                <div class="containers">
+                    <h3>Cheques Sem Fundos/Devolvidos</h3>
+                    <div id="cheques_sem_fundo"></div>
+                </div>
+            </div>
+        </div>
+
         <div class="title">
             <h1 class="h1-title">ANÁLISE SÓCIOS</h1>
         </div>
 
+        <div class="title">
+            <h1 class="h1-title">BOA VISTA</h1>
+        </div>
 
+        <div class="container_boavista">
+            <div class="containers">
+                <div class="container-score">
+                    <h3 class="container-title">Score</h3>
+                    <p id="score"></p>
+                    <p id="texto"></p>
+                </div>
 
+                <div class="renda-presumida">
+                    <h3 class="container-title">Renda Presumida</h3>
+                    <div style="display: flex;">
+                        <p class="renda-presumida-name">Faixa/Classe:</p>
+                        <span class="renda-presumida-texto" id="renda_presumida_score"></span>
+                    </div>
+                    <div style="display: flex;">
+                        <p class="renda-presumida-name">Renda Mensal:</p>
+                        <span class="renda-presumida-texto" id="renda_presumida_texto"></span>
+                    </div>
+                </div>
+
+                <div style="display: flex;">
+                    <span style="margin-top:150px;">0</span>
+                    <div class="medidor"></div>
+                    <span style="margin-top:150px;">1000</span>
+                </div>
+                <div style="display: flex;">
+                    <p id="texto-probabilidade">Probablidade de Inadimplência:</p>
+                    <p id="probabilidade"></p>
+                </div>
+            </div>
+            <div class="containers">
+                <div class="container-situacao">
+                    <h3>Protestos</h3>
+                    <div id="protestos_pf"></div>
+                </div>
+
+                <div class="container-situacao">
+                    <h3>Registro de débitos</h3>
+                    <div id="debitos_lista"></div>
+                </div>
+
+                <div class="container-situacao">
+                    <h3>Cheques Devolvidos/Sem Fundo</h3>
+                    <div id="cheque-sem-fundo_icons"></div>
+                </div>
+            </div>
+        </div>
+
+       
 
     </div>
     <script type="module" src="./scriptResumo.js"></script>
