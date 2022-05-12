@@ -197,7 +197,7 @@ function get_resumo_irpf(irpf) {
         dividas_onus_atual.style.top = `calc(${top}px * 2)`;
         container_graficos_dividas_onus_2_icons.innerHTML += `
         <div class="fa-5x">
-            <i style="color: orange" class="fa-regular fa-face-frown"></i>
+            <i style="color: darkcyan;" class="fa-regular fa-face-laugh-beam"></i>
         </div>
         `
     } else if (dividas_onus_2 > dividas_onus_1) {
@@ -214,7 +214,7 @@ function get_resumo_irpf(irpf) {
         dividas_onus_atual.style.position = 'relative';
         container_graficos_dividas_onus_2_icons.innerHTML += `
         <div class="fa-5x">
-            <i style="color: darkcyan;" class="fa-regular fa-face-laugh-beam"></i>
+            <i style="color: orange" class="fa-regular fa-face-frown"></i>
         </div>
         `
     } else if (dividas_onus_1 === dividas_onus_2 && dividas_onus_1 != 0 && dividas_onus_2 != 0) {
