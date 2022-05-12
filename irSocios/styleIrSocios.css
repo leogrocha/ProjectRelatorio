@@ -158,8 +158,8 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 300px;
 }
 
 .title_imposto {
@@ -174,25 +174,35 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 300px;
 }
 
-#container_graficos_1_valor, #container_graficos_2_valor {
+#container_graficos_1_valor, #container_graficos_2_valor, #container_graficos_dividas_onus_1_valor, #container_graficos_dividas_onus_2_valor {
     font-size: 22px;
 }
 
-#container_graficos_1_ano, #container_graficos_2_ano {
+#container_graficos_1_ano, #container_graficos_2_ano, #container_graficos_dividas_onus_1_ano, #container_graficos_dividas_onus_2_ano {
     font-size: 24px;
     font-weight: bold;
 }
 
 #container_graficos_1_grafico, #container_graficos_dividas_onus_1_grafico {
-    background-color: yellow;
+    background-color: #F0FD60;
+    border: 1px solid white;
+    border-radius: 10px;
 }
 
 #container_graficos_2_grafico, #container_graficos_dividas_onus_2_grafico {
     background-color: lightgreen;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+#container_graficos_2_grafico, #container_graficos_dividas_onus_2_grafico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .regra_lucratividade {
