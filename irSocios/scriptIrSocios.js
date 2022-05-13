@@ -166,6 +166,11 @@ function get_resumo_irpf(irpf) {
         bens_direitos_atual.style.width = '150px';
         bens_direitos_atual.style.height = '200px';
         bens_direitos_atual.style.position = 'relative';
+        container_graficos_2_icons.innerHTML += `
+        <div class="fa-5x">
+            <i style="color: darkcyan;" class="fa-regular fa-face-laugh-beam"></i>
+        </div>
+        `
     } else if (bens_direitos_1 === 0 && bens_direitos_2 === 0) {
         bens_direitos_anterior.style.width = '150px';
         bens_direitos_anterior.style.height = '0px';
@@ -289,13 +294,13 @@ function get_table_agronegocio(irpf) {
     td_receita_bruta.innerText = `Receita Bruta - ${formatLocale(class_irpf.apuracao.receita_bruta)}`;
     td_receita_bruta.style.width = '50%';
     const td_bens_atividade_rural = document.createElement('td');
-    td_bens_atividade_rural.innerText = `Bens de Atividade Rural -`;
+    td_bens_atividade_rural.innerText = `Bens de Atividade Rural - ${formatLocale(class_irpf.atividade_rural.bens_rural)}`;
     const row_3 = document.createElement('tr');
     const td_despesas_custeio_investimento = document.createElement('td');
     td_despesas_custeio_investimento.innerText = `Despesas de Custeio e Investimento - ${formatLocale(class_irpf.apuracao.despesas_custeio_investimento)}`;
     td_despesas_custeio_investimento.style.width = '50%';
     const dividas_vinculadas_atividade_rural = document.createElement('td');
-    dividas_vinculadas_atividade_rural.innerText = `Dívidas Vinculadas à Atividade Rural - `;
+    dividas_vinculadas_atividade_rural.innerText = `Dívidas Vinculadas à Atividade Rural - ${formatLocale(class_irpf.atividade_rural.dividas_rural)}`;
     const row_4 = document.createElement('tr');
     const td_resultado = document.createElement('td');
     td_resultado.innerText = `Resultado - ${formatLocale(class_irpf.apuracao.resultado)}`;

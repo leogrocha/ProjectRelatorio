@@ -3,6 +3,8 @@ export default class Irpf {
         this.agronegocio = irpf[0].agronegocio;
         this.apuracao = this.agronegocio.apuracao;
 
+        this.atividade_rural = irpf[0].atividade_rural;
+
         this.bens_dividas = irpf[0].bens_dividas;
         this.bens_direitos = this.bens_dividas.bens_direitos;
         this.dividas_onus = this.bens_dividas.dividas_onus;
