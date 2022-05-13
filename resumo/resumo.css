@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-    width: 100vw;
+    width: 100%;
     height: 100%;
 }
 
@@ -90,7 +90,6 @@ body {
 }
 
 .container-balanco_dre .container-resumo {
-    border: 1px solid black;
     padding: 10px;
     margin: 20px 20px 0px 20px;
     width: 25%;
@@ -98,7 +97,9 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border-radius: 5px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000;
 }
 
 [indice] {
@@ -109,7 +110,7 @@ body {
 [situacao] {
     font-weight: bold;
     font-size: 18px;
-}  
+}
 
 .container-consulta_credito {
     display: flex;
@@ -135,7 +136,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 20px 50px 0px 50px;
-    
+
 }
 
 .container-consulta_credito .container-consulta_credito-1 .container-score_pj {
@@ -185,11 +186,13 @@ body {
 
 .container-consulta_credito .container-consulta_credito-1 .container-score_pj {
     margin-right: 50px;
-    border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000;
 }
 
 .container-consulta_credito .container-consulta_credito-2 {
@@ -197,12 +200,10 @@ body {
     justify-content: center;
     align-items: center;
     margin: 20px 50px 0px 50px;
-    
+
 }
 
 .container-consulta_credito .container-consulta_credito-2 .containers {
-    border: 1px solid black;
-    border-radius: 5px;
     margin-left: 10px;
     display: flex;
     justify-content: center;
@@ -211,6 +212,9 @@ body {
     height: 150px;
     width: 250px;
     text-align: center;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000;
 }
 
 #protestos_pj {
@@ -223,8 +227,9 @@ body {
     align-items: center;
     flex-direction: column;
     width: 50vw;
-    border: 2px solid black;
-    border-radius: 5px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000;
 }
 
 .container_boavista .containers .renda-presumida {
@@ -233,8 +238,9 @@ body {
     align-items: center;
     flex-direction: column;
     width: 50vw;
-    border: 2px solid black;
-    border-radius: 5px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000;
     margin-top: 10px;
 }
 
@@ -256,8 +262,9 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 2px solid black;
-    border-radius: 5px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000;
     margin: 10px;
     width: 200px;
     height: 160px;
@@ -314,5 +321,195 @@ body {
 #probabilidade {
     font-size: 18px;
     margin-left: 10px;
-    
+
+}
+
+.dados-pessoa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 2px;
+}
+
+#nome_cpf {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#exercicio {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 2px;
+    background-color: #04AA6D;
+}
+
+.h1-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+.container-analise_socios .container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;
+    padding: 2px;
+}
+
+
+.container-analise_socios .container1 .situacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px 20px 10px 0px;
+    padding: 10px;
+    width: 200px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000;
+}
+
+.container-analise_socios .container1 .situacao #icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.container-analise_socios .container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;
+    padding: 2px;
+}
+
+.container-analise_socios .container2 #bens_direitos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000;
+    padding: 10px;
+}
+
+.container-analise_socios .container2 #dividas_onus_reais {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000;
+    padding: 10px;
+    margin-left: 30px;
+}
+
+.container_graficos {
+    display: grid;
+    grid-template-columns: auto auto;
+    text-align: center;
+}
+
+.container_graficos_1 {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 250px;
+    height: 300px;
+}
+
+.title_imposto {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.container_graficos_2 {
+    margin-left: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 250px;
+    height: 300px;
+}
+
+#container_graficos_1_valor,
+#container_graficos_2_valor,
+#container_graficos_dividas_onus_1_valor,
+#container_graficos_dividas_onus_2_valor {
+    font-size: 22px;
+}
+
+#container_graficos_1_ano,
+#container_graficos_2_ano,
+#container_graficos_dividas_onus_1_ano,
+#container_graficos_dividas_onus_2_ano {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#container_graficos_1_grafico,
+#container_graficos_dividas_onus_1_grafico {
+    background-color: #F0FD60;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+#container_graficos_2_grafico,
+#container_graficos_dividas_onus_2_grafico {
+    background-color: lightgreen;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+#container_graficos_2_grafico,
+#container_graficos_dividas_onus_2_grafico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.regra_lucratividade {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.container-dados-consolidados {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#table_rendimentos, #table_agronegocio, #table_mov_rebanho {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

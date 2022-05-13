@@ -17,18 +17,27 @@
     <div class="container">
         <div class="topnav">
             <a style="background-color:#ddd; color: black;" href="/index.html">Balancete PJ</a>
-            <a href="./balanceteValidacao/balanceteValidacao.html">Balancete Validação</a>
             <a href="./boaVistaPj/boaVistaPj.html">Boa Vista PJ</a>
             <a href="./boaVistaPfSocios/boaVistaPfSocios.html">Boa Vista PF Sócios</a>
             <a href="./irSocios/irSocios.html">IR Sócios</a>
             <a href="./resumo/resumo.html">Resumo</a>
         </div>
 
-        <div class="dados-ectare">
-            <h1 class="h1-dados-ectare">ECTARE PAY SERVIÇOS DE GESTÃO DE PAGAMENTOS S/A</h1>
-            <p class="p-dados-ectare-cnpj">34.536.749/0001-70</p>
-            <p class="p-dados-ectare">RUA LITUÂNIA, 150 - JARDIM EUROPA</p>
-            <p class="p-dados-ectare">37950-000 - SAO SEBASTIÃO DO PARAÍSO</p>
+        <div class="container_dados">
+            <div class="dados-ectare">
+                <h1 class="h1-dados-ectare">ECTARE PAY SERVIÇOS DE GESTÃO DE PAGAMENTOS S/A</h1>
+                <p class="p-dados-ectare-cnpj">34.536.749/0001-70</p>
+                <p class="p-dados-ectare">RUA LITUÂNIA, 150 - JARDIM EUROPA</p>
+                <p class="p-dados-ectare">37950-000 - SAO SEBASTIÃO DO PARAÍSO</p>
+            </div>
+            
+            <div class="informacoes">
+                <a href="./balanceteValidacao/balanceteValidacao.html">
+                    <div class="fa-4x">
+                        <i style="color: #04AA6D" class="fa-solid fa-circle-info"></i>
+                    </div>
+                </a>
+            </div>
         </div>
 
         <div class="title">
@@ -55,6 +64,7 @@
                 <span indice class="endividamento_geral_indice"></span>
                 <span situacao class="endividamento_geral_situacao"></span>
             </div>
+
 
             <div class="container-liquidez">
                 <h3 class="patrimonio_social_title">Imobilização Patrimônio Social</h3>
@@ -104,7 +114,7 @@
         </div>
 
         <div id="container-variaveis">
-            
+
         </div>
 
         <div class="title">
@@ -117,18 +127,23 @@
                 <span indice class="liquidez_corrente_indice"></span>
                 <span situacao class="liquidez_corrente_situacao"></span>
                 <span class="legenda">LC = Ativo Circulante / Passivo Circulante</span>
-                <span class="descricao">O objetivo deste indicador é verificador a capacidade de pagamento dos valores de curto prazo no final de Dezembro do ano <span id="year"></span>,
-                    a empresa tinha valores a receber e a realizar no ativo circulante, na razão de R$5,27 para cada R$1,00 de dívidas
-                a pagar constantes do passivo circulante. </span>
+                <span class="descricao">O objetivo deste indicador é verificador a capacidade de pagamento dos valores
+                    de curto prazo no final de Dezembro do ano <span id="year"></span>,
+                    a empresa tinha valores a receber e a realizar no ativo circulante, na razão de R$5,27 para cada
+                    R$1,00 de dívidas
+                    a pagar constantes do passivo circulante. </span>
             </div>
 
             <div class="container-indicadores-performance-liquidez">
                 <h3 title class="liquidez_geral_title">Liquidez Geral</h3>
                 <span indice class="liquidez_geral_indice"></span>
                 <span situacao class="liquidez_geral_situacao"></span>
-                <span class="legenda">LG= (Ativo Circulante + Realizável á Longo Prazo) / (Passivo Circulante + Exigível á Longo Prazo)</span>
-                <span class="descricao">Objetiva verificar a capacidade de pagamento, agora analisando as condições totais de saldos a receber e a 
-                    realizar contra os valores a pagar, considerando tanto os dados de curto prazo com os de longo prazo.
+                <span class="legenda">LG= (Ativo Circulante + Realizável á Longo Prazo) / (Passivo Circulante + Exigível
+                    á Longo Prazo)</span>
+                <span class="descricao">Objetiva verificar a capacidade de pagamento, agora analisando as condições
+                    totais de saldos a receber e a
+                    realizar contra os valores a pagar, considerando tanto os dados de curto prazo com os de longo
+                    prazo.
                 </span>
             </div>
 
@@ -137,9 +152,12 @@
                 <span indice class="endividamento_geral_indice"></span>
                 <span situacao class="endividamento_geral_situacao"></span>
                 <span class="legenda">EG= (Passivo Circulante + Exigível a Longo Prazo) / Ativo Total</span>
-                <span class="descricao">A finalidade deste indicador é medir a estrutura de financiamento da companhia. É um número que
-                    evidência o reflexo das políticas de alavancagem financeira da empresa e financiamento do capital de giro 
-                    a cada final de período. O ideal para esse indicador é apresentar um resultado abaixo de R$1,00. Então o valor
+                <span class="descricao">A finalidade deste indicador é medir a estrutura de financiamento da companhia.
+                    É um número que
+                    evidência o reflexo das políticas de alavancagem financeira da empresa e financiamento do capital de
+                    giro
+                    a cada final de período. O ideal para esse indicador é apresentar um resultado abaixo de R$1,00.
+                    Então o valor
                     encontrado, satisfaz o objetivo desse indicador.
                 </span>
             </div>
@@ -149,11 +167,16 @@
                 <span indice class="patrimonio_social_indice"></span>
                 <span situacao class="patrimonio_social_situacao"></span>
                 <span class="legenda">IPS = Imbobilizado / Patrimônio</span>
-                <span class="descricao">Os indicadores de Imobilização objetivam mostrar o grau de recursos da empresa que está investido em ativo
-                    permanente(máquinas, imóveis, etc). A Imobilização do Patrimônio Social, especificamente, mostra o percentual do patrimônio Social 
-                    que foi aplicado no ativo permanente. É um indicador importante pois seu crescimento excessivo pode provocar problemas de solvência. <br>
-                    Valor Ideal: Quanto menor melhor, já que quanto menos investe em ativo permanente, mais recursos próprios sobram para outros investimentos,
-                    diminuindo a necessidade de endividamento e do financimento de terceiros. É importante ter em mente, entretanto, que este 
+                <span class="descricao">Os indicadores de Imobilização objetivam mostrar o grau de recursos da empresa
+                    que está investido em ativo
+                    permanente(máquinas, imóveis, etc). A Imobilização do Patrimônio Social, especificamente, mostra o
+                    percentual do patrimônio Social
+                    que foi aplicado no ativo permanente. É um indicador importante pois seu crescimento excessivo pode
+                    provocar problemas de solvência. <br>
+                    Valor Ideal: Quanto menor melhor, já que quanto menos investe em ativo permanente, mais recursos
+                    próprios sobram para outros investimentos,
+                    diminuindo a necessidade de endividamento e do financimento de terceiros. É importante ter em mente,
+                    entretanto, que este
                     indicador muda muito de acordo como o setor de atuação.
                 </span>
             </div>
@@ -163,11 +186,15 @@
                 <span indice class="liquidez_imediata_indice"></span>
                 <span situacao class="liquidez_imediata_situacao"></span>
                 <span class="legenda">LI = Disponibilidades / Passivo Circulante</span>
-                <span class="descricao">Indicadores de Liquidez geral mostram a capacidade que a empresa tem de pagar seus compromissos, especialmente
-                    os de prazo mais curto. A Liquidez Imediata mostra a capacidade da empresa em termos de recursos financeiros disponíveis que podem ser usados
-                    para o pagamento das dívidas de curtíssimo prazo. Em geral ele apresenta valores baixos, já que normalmente as empresa não mantém grande
+                <span class="descricao">Indicadores de Liquidez geral mostram a capacidade que a empresa tem de pagar
+                    seus compromissos, especialmente
+                    os de prazo mais curto. A Liquidez Imediata mostra a capacidade da empresa em termos de recursos
+                    financeiros disponíveis que podem ser usados
+                    para o pagamento das dívidas de curtíssimo prazo. Em geral ele apresenta valores baixos, já que
+                    normalmente as empresa não mantém grande
                     quantidade de dinheiro em caixa, porém é de particular importância no caso de bancos. <br>
-                    Valor Ideal: É extremamente complicado definir um valor ideal para este indicador, mas pode-se falar que em geral valores >= 0,3 são considerados
+                    Valor Ideal: É extremamente complicado definir um valor ideal para este indicador, mas pode-se falar
+                    que em geral valores >= 0,3 são considerados
                     bons.
                 </span>
             </div>
@@ -177,9 +204,12 @@
                 <span indice class="liquidez_seca_indice"></span>
                 <span situacao class="liquidez_seca_situacao"></span>
                 <span class="legenda">LS = (Ativo Circulante - Estoque) / Passivo Circulante</span>
-                <span class="descricao">Mostram a capacidade que a empresa tem de pagar seus compromissos, especialmente os de prazo mais curto. A liquidez Seca
-                    também mostra a capacidade de pagamento dos compromissos de curto prazo da empresa, porém ele é bem mais rigoroso que o de Liquidez Corrente já 
-                    que não considera que o estoque da empresa tenha liquidez suficiente para pagar estes compromissos. <br>
+                <span class="descricao">Mostram a capacidade que a empresa tem de pagar seus compromissos, especialmente
+                    os de prazo mais curto. A liquidez Seca
+                    também mostra a capacidade de pagamento dos compromissos de curto prazo da empresa, porém ele é bem
+                    mais rigoroso que o de Liquidez Corrente já
+                    que não considera que o estoque da empresa tenha liquidez suficiente para pagar estes compromissos.
+                    <br>
                     Valor Ideal: Em geral quanto maior melhor, mas normalmente considera-se valores >= 1 como bons.
                 </span>
             </div>
@@ -189,7 +219,8 @@
                 <span indice class="terceiros_indice"></span>
                 <span situacao class="terceiros_situacao"></span>
                 <span class="legenda">PCT = (Passivo Circulante + Passivo Não Circulante) / Patrimônio Líquido</span>
-                <span class="descricao">Corresponde ao percentual de capital externo que é utilizado pelas empresas para financiar sua geração de bens e/ou
+                <span class="descricao">Corresponde ao percentual de capital externo que é utilizado pelas empresas para
+                    financiar sua geração de bens e/ou
                     serviços e demais atividades.
                 </span>
             </div>
@@ -199,9 +230,12 @@
                 <span indice class="solvencia_geral_indice"></span>
                 <span situacao class="solvencia_geral_situacao"></span>
                 <span class="legenda">S = (Ativo Total) / (Passivo Circulante + Passivo Não Circulante)</span>
-                <span class="descricao">O índice de Solvência Geral expressa o grau de garantia que a empresa dispõe em Ativos (totais), para 
-                    pagamento do total de suas dívidas. Envolve além dos recursos líquidos, também os permanentes. O resultado "> 1" é indispensável à comprovação
-                    da boa situação financeira, sendo certo que, quanto maior o resultado, melhor será a condição da empresa.
+                <span class="descricao">O índice de Solvência Geral expressa o grau de garantia que a empresa dispõe em
+                    Ativos (totais), para
+                    pagamento do total de suas dívidas. Envolve além dos recursos líquidos, também os permanentes. O
+                    resultado "> 1" é indispensável à comprovação
+                    da boa situação financeira, sendo certo que, quanto maior o resultado, melhor será a condição da
+                    empresa.
                 </span>
             </div>
 
@@ -210,19 +244,17 @@
                 <span indice class="lucratividade_indice"></span>
                 <span situacao class="lucratividade_situacao"></span>
                 <span class="legenda">L = (Lucro Líquido / Faturamento) x 100</span>
-                <span class="descricao">A lucratividade nos responde se o negócio está justificando ou não a operação, isto é, se as vendas são suficientes para 
-                    pagar custos e despesas e ainda gerar lucro. Além disto, como a lucratividade é dada em percentual, torna-se bastante útil para a comparação de 
-                    empresas, mesmo de tamanhos ou setores distintos, sendo muito usado por investidores e bancos para análise de financiamentos.
+                <span class="descricao">A lucratividade nos responde se o negócio está justificando ou não a operação,
+                    isto é, se as vendas são suficientes para
+                    pagar custos e despesas e ainda gerar lucro. Além disto, como a lucratividade é dada em percentual,
+                    torna-se bastante útil para a comparação de
+                    empresas, mesmo de tamanhos ou setores distintos, sendo muito usado por investidores e bancos para
+                    análise de financiamentos.
                 </span>
             </div>
 
             <br>
             <br>
-
-            <div id="ativo-0"></div>
-            <div id="ativo-1"></div>
-            <div id="ativo-2"></div>
-            <div id="ativo-3"></div>
         </div>
     </div>
 

@@ -50,9 +50,6 @@ function get_liquidez(liquidez_balanco) {
         document.getElementsByClassName(indices_lst[i] + "_indice")[0].innerText = indices[indices_lst[i]].indice.toFixed(2);
         document.getElementsByClassName(indices_lst[i] + "_situacao")[0].innerText = indices[indices_lst[i]].situacao;
 
-
-        console.log(indices_lst[i] + " - " + indices[indices_lst[i]].situacao);
-
         if (indices[indices_lst[i]].situacao === "pessimo") {
             document.querySelector("#" + indices_lst[i] + "_icons").innerHTML += `
                 <div class="fa-4x">
@@ -166,7 +163,6 @@ function get_table(balanco_anterior, dre_anterior, liquidez_balanco, dre) {
     row.appendChild(heading_1);
 
     const periodo_balanco_anterior = indices_balanco_anterior.periodo;
-    console.log(periodo_balanco_anterior);
     let ano_anterior = periodo_balanco_anterior.substring(8, 11);
     
     const periodo_balanco_atual = indices_balanco_atual.periodo;
@@ -278,8 +274,6 @@ function get_table(balanco_anterior, dre_anterior, liquidez_balanco, dre) {
             row_2.appendChild(dre_anterior_1);
             row_2.appendChild(dre_anterior_2);
             row_2.appendChild(dre_anterior_3);
-
-            console.log(indices_dre_anterior['receita_bruta'][0]);
 
             const dre_atual_0 = document.createElement('td');
             const dre_atual_1 = document.createElement('td');

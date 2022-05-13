@@ -4,6 +4,7 @@ import Dre from '../model/dre.js';
 import DreAnterior from '../model/dre_anterior.js';
 import BoaVistaPJ from '../model/boavista_pj.js';
 import BoaVistaPF from '../model/boavista_pf.js';
+import Irpf from '../model/irpf.js';
 
 const raw = {
     "balanco": ["https://server.ectarepay.com.br/ectareArquivos/pdfviewer2619204387105330867.pdf"],
@@ -43,6 +44,10 @@ function get_data() {
 
 get_data();
 
+function formatLocale(value) {
+    return value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+}
+
 function get_liquidez(liquidez_balanco) {
     const indices = new Liquidez(liquidez_balanco);
 
@@ -53,9 +58,6 @@ function get_liquidez(liquidez_balanco) {
 
         document.getElementById(indices_lst[i] + "_indice").innerText = indices[indices_lst[i]].indice.toFixed(2);
         document.getElementById(indices_lst[i] + "_situacao").innerText = indices[indices_lst[i]].situacao;
-
-
-        console.log(indices_lst[i] + " - " + indices[indices_lst[i]].situacao);
 
         if (indices[indices_lst[i]].situacao === "pessimo") {
             document.querySelector("#" + indices_lst[i] + "_icons").innerHTML += `
@@ -242,6 +244,197 @@ function get_boavista_pf(boavista) {
 
 }
 
+function get_dados_pessoa(irpf) {
+    const class_irpf = new Irpf(irpf);
+
+    const nome = document.getElementById('nome_cpf');
+    nome.innerHTML = `${class_irpf.dados_pessoais.nome} - ${class_irpf.dados_pessoais.cpf}`;
+    const exercicio = document.getElementById('exercicio');
+    exercicio.innerHTML = class_irpf.exercicio;
+}
+
+function get_resumo_irpf(irpf) {
+    const class_irpf = new Irpf(irpf);
+    const indices_situacao = ['agronegocio'];
+
+    for (let i = 0; i < indices_situacao.length; i++) {
+        const situacao = class_irpf.apuracao.situacao;
+        if (situacao === "pessimo") {
+            document.querySelector("#" + indices_situacao[i] + "_icons").innerHTML += `
+                <div class="fa-4x" id="icon">
+                    <i style="color: red" class="fa-regular fa-face-dizzy"></i>
+                </div>
+            `
+        } else if (situacao === "ruim") {
+            document.querySelector("#" + indices_situacao[i] + "_icons").innerHTML += `
+                <div class="fa-4x" id="icon">
+                <i style="color: orange" class="fa-regular fa-face-frown"></i>
+                </div>
+            `
+        } else if (situacao === "atencao") {
+            document.querySelector("#" + indices_situacao[i] + "_icons").innerHTML += `
+                <div class="fa-4x" id="icon">
+                <i style="color: darkorange;" class="fa-regular fa-face-meh"></i>
+                </div>
+            `
+        } else if (situacao === "bom") {
+            document.querySelector("#" + indices_situacao[i] + "_icons").innerHTML += `
+                <div class="fa-4x" id="icon">
+                <i style="color: green;" class="fa-regular fa-face-smile"></i>
+                </div>
+            `
+        } else if (situacao === "otimo") {
+            document.querySelector("#" + indices_situacao[i] + "_icons").innerHTML += `
+                <div class="fa-4x" id="icon">
+                <i style="color: darkcyan;" class="fa-regular fa-face-laugh-beam"></i>
+                </div>
+            `
+        }
+    }
+
+    const ano_anterior = class_irpf.exercicio.substring(31, 36);
+    const ano_corrente = parseInt(class_irpf.exercicio.substring(31, 36));
+
+    const container_graficos_1_valor = document.getElementById('container_graficos_1_valor');
+    const container_graficos_2_valor = document.getElementById('container_graficos_2_valor');
+    const container_graficos_1_ano = document.getElementById('container_graficos_1_ano');
+    const container_graficos_2_ano = document.getElementById('container_graficos_2_ano');
+
+    container_graficos_1_valor.innerHTML = formatLocale(class_irpf.bens_direitos.bens_e_direitos_anterior);
+    container_graficos_2_valor.innerHTML = formatLocale(class_irpf.bens_direitos.bens_e_direitos_corrente);
+    container_graficos_1_ano.innerHTML = ano_anterior;
+    container_graficos_2_ano.innerHTML = ano_corrente + 1;
+
+    const container_graficos_dividas_onus__1_valor = document.getElementById('container_graficos_dividas_onus_1_valor');
+    const container_graficos_dividas_onus__2_valor = document.getElementById('container_graficos_dividas_onus_2_valor');
+    const container_graficos_dividas_onus__1_ano = document.getElementById('container_graficos_dividas_onus_1_ano');
+    const container_graficos_dividas_onus__2_ano = document.getElementById('container_graficos_dividas_onus_2_ano');
+
+    container_graficos_dividas_onus__1_valor.innerHTML = formatLocale(class_irpf.dividas_onus.dividas_e_onus_reais_anterior);
+    container_graficos_dividas_onus__2_valor.innerHTML = formatLocale(class_irpf.dividas_onus.dividas_e_onus_reais_corrente);
+    container_graficos_dividas_onus__1_ano.innerHTML = ano_anterior;
+    container_graficos_dividas_onus__2_ano.innerHTML = ano_corrente + 1;
+
+    const bens_direitos_anterior = document.getElementById('container_graficos_1_grafico');
+    const bens_direitos_atual = document.getElementById('container_graficos_2_grafico');
+    const bens_direitos_1 = class_irpf.bens_direitos.bens_e_direitos_anterior;
+    const bens_direitos_2 = class_irpf.bens_direitos.bens_e_direitos_corrente;
+
+    const container_graficos_2_icons = document.getElementById('container_graficos_2_icons');
+
+
+    if (bens_direitos_1 > bens_direitos_2) {
+        let porcentagem_diferenca = ((bens_direitos_2 * 100) / bens_direitos_1);
+        let top = (100.00 - porcentagem_diferenca) / 2;
+
+        bens_direitos_anterior.style.width = '150px';
+        bens_direitos_anterior.style.height = '200px';
+
+        bens_direitos_atual.style.width = '150px';
+        bens_direitos_atual.style.height = `calc(${porcentagem_diferenca}px * 2)`;
+        bens_direitos_atual.style.position = 'relative';
+        bens_direitos_atual.style.top = `calc(${top}px * 2)`;
+        container_graficos_2_icons.innerHTML += `
+        <div class="fa-5x">
+            <i style="color: orange" class="fa-regular fa-face-frown"></i>
+        </div>
+        `
+    } else if (bens_direitos_2 > bens_direitos_1) {
+        let porcentagem_diferenca = ((bens_direitos_1 * 100) / bens_direitos_2);
+        let top = (100.00 - porcentagem_diferenca) / 2;
+
+        bens_direitos_anterior.style.width = '150px';
+        bens_direitos_anterior.style.height = `calc(${porcentagem_diferenca}px * 2)`;
+        bens_direitos_anterior.style.position = 'relative';
+        bens_direitos_anterior.style.top = `calc(${top}px * 2)`;
+
+        bens_direitos_atual.style.width = '150px';
+        bens_direitos_atual.style.height = '200px';
+        bens_direitos_atual.style.position = 'relative';
+        container_graficos_2_icons.innerHTML += `
+        <div class="fa-5x">
+            <i style="color: darkcyan;" class="fa-regular fa-face-laugh-beam"></i>
+        </div>
+        `
+    } else if (bens_direitos_1 === bens_direitos_2 && bens_direitos_1 != 0 && bens_direitos_2 != 0) {
+        bens_direitos_anterior.style.width = '150px';
+        bens_direitos_anterior.style.height = '200px';
+        bens_direitos_anterior.style.position = 'relative';
+
+        bens_direitos_atual.style.width = '150px';
+        bens_direitos_atual.style.height = '200px';
+        bens_direitos_atual.style.position = 'relative';
+    } else if (bens_direitos_1 === 0 && bens_direitos_2 === 0) {
+        bens_direitos_anterior.style.width = '150px';
+        bens_direitos_anterior.style.height = '0px';
+        bens_direitos_anterior.style.position = 'relative';
+
+        bens_direitos_atual.style.width = '150px';
+        bens_direitos_atual.style.height = '0px';
+        bens_direitos_atual.style.position = 'relative';
+    }
+
+    const dividas_onus_anterior = document.getElementById('container_graficos_dividas_onus_1_grafico');
+    const dividas_onus_atual = document.getElementById('container_graficos_dividas_onus_2_grafico');
+    const dividas_onus_1 = class_irpf.dividas_onus.dividas_e_onus_reais_anterior;
+    const dividas_onus_2 = class_irpf.dividas_onus.dividas_e_onus_reais_corrente;
+
+    const container_graficos_dividas_onus_2_icons = document.getElementById('container_graficos_dividas_onus_2_icons');
+
+
+    if (dividas_onus_1 > dividas_onus_2) {
+        let porcentagem_diferenca = ((dividas_onus_2 * 100) / dividas_onus_1);
+        let top = (100.00 - porcentagem_diferenca) / 2;
+
+        dividas_onus_anterior.style.width = '150px';
+        dividas_onus_anterior.style.height = '200px';
+
+
+        dividas_onus_atual.style.width = '150px';
+        dividas_onus_atual.style.height = `calc(${porcentagem_diferenca}px * 2)`;
+        dividas_onus_atual.style.position = 'relative';
+        dividas_onus_atual.style.top = `calc(${top}px * 2)`;
+        container_graficos_dividas_onus_2_icons.innerHTML += `
+        <div class="fa-5x">
+            <i style="color: darkcyan;" class="fa-regular fa-face-laugh-beam"></i>
+        </div>
+        `
+    } else if (dividas_onus_2 > dividas_onus_1) {
+        let porcentagem_diferenca = ((dividas_onus_1 * 100) / dividas_onus_2);
+        let top = (100.00 - porcentagem_diferenca) / 2;
+
+        dividas_onus_anterior.style.width = '150px';
+        dividas_onus_anterior.style.height = `calc(${porcentagem_diferenca}px * 2)`;
+        dividas_onus_anterior.style.position = 'relative';
+        dividas_onus_anterior.style.top = `calc(${top}px * 2)`;
+
+        dividas_onus_atual.style.width = '150px';
+        dividas_onus_atual.style.height = '200px';
+        dividas_onus_atual.style.position = 'relative';
+        container_graficos_dividas_onus_2_icons.innerHTML += `
+        <div class="fa-5x">
+            <i style="color: orange" class="fa-regular fa-face-frown"></i>
+        </div>
+        `
+    } else if (dividas_onus_1 === dividas_onus_2 && dividas_onus_1 != 0 && dividas_onus_2 != 0) {
+        dividas_onus_anterior.style.width = '150px';
+        dividas_onus_anterior.style.height = '200px';
+        dividas_onus_anterior.style.position = 'relative';
+
+        dividas_onus_atual.style.width = '150px';
+        dividas_onus_atual.style.height = '200px';
+        dividas_onus_atual.style.position = 'relative';
+    } else if (dividas_onus_1 === 0 && dividas_onus_2 === 0) {
+        dividas_onus_anterior.style.width = '150px';
+        dividas_onus_anterior.style.height = '0px';
+        dividas_onus_anterior.style.position = 'relative';
+
+        dividas_onus_atual.style.width = '150px';
+        dividas_onus_atual.style.height = '0px';
+        dividas_onus_atual.style.position = 'relative';
+    }
+}
+
 function relatorio(result) {
     if ("liquidez_balanco" in result.data) {
         get_liquidez(result.data.liquidez_balanco);
@@ -254,5 +447,10 @@ function relatorio(result) {
     if ("boavista" in result.data) {
         get_boavista_pj(result.data.boavista);
         get_boavista_pf(result.data.boavista);
+    }
+
+    if("irpf" in result.data){
+        get_dados_pessoa(result.data.irpf);
+        get_resumo_irpf(result.data.irpf);
     }
 }    
