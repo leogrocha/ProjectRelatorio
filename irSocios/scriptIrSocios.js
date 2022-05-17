@@ -235,10 +235,12 @@ function get_resumo_irpf(irpf) {
         dividas_onus_anterior.style.width = '150px';
         dividas_onus_anterior.style.height = '0px';
         dividas_onus_anterior.style.position = 'relative';
+        dividas_onus_anterior.style.top = '100%';
 
         dividas_onus_atual.style.width = '150px';
         dividas_onus_atual.style.height = '0px';
         dividas_onus_atual.style.position = 'relative';
+        dividas_onus_atual.style.top = '100%';
     }
 }
 
